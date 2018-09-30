@@ -1,9 +1,12 @@
 {
   "parser": "babel-eslint",
   "extends": "standard",
-  "plugins": [
-    "babel"
-  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "plugins": ["babel"],
   "rules": {
     "strict": 0
   }

@@ -1,6 +1,6 @@
 const hypercore = require('hypercore')
 const ram = require('random-access-memory')
-const createFeed = require('.');
+const createFeed = require('.')
 
 describe('problem 02', () => {
   const feed = createFeed()
