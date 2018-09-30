@@ -1,0 +1,41 @@
+{
+  "name": "dat-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "hypercore": "^6.19.1",
+    "random-access-memory": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "docsify-cli": "^4.2.1",
+    "eslint": "^5.6.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^23.6.0",
+    "parcel-bundler": "^1.10.1"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "docsify serve --port 5000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geut/dat-workshop.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/geut/dat-workshop/issues"
+  },
+  "homepage": "https://github.com/geut/dat-workshop#readme"
+}
