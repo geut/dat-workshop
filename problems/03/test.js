@@ -1,6 +1,6 @@
 const hypercore = require('hypercore')
 const ram = require('random-access-memory')
-const getKeys = require('./solution')
+const getKeys = require('.')
 const getExpectedKeys = require('./solution')
 
 describe('problem 03', () => {

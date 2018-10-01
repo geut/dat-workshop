@@ -1,4 +1,4 @@
-# 3 - The key is the key
+# 3 - La clave es la clave
 
 En el problema anterior vimos como instanciar un `feed` de Hypercore y
 mencionamos la palabra `seguridad`.

@@ -1,17 +1,28 @@
-const EventEmitter = require('events')
 const hypercore = require('hypercore')
 const ram = require('random-access-memory')
+const pump = require('pump')
+const writer = require('flush-write-stream')
 
-module.exports = class Solution extends EventEmitter {
-  constructor () {
-    super()
+module.exports = (key, remoteFeed) => {
+  const feed = hypercore(ram, key, { valueEncoding: 'utf8' })
 
-    this.db = hypercore(ram, { valueEncoding: 'json' })
-    this.db.on('ready', () => {
-      this.emit('keys', {
-        publicKey: this.db.key,
-        discoveryKey: this.db.discoveryKey
+  return new Promise((resolve, reject) => {
+    // we need to sync our database with the remote one
+    pump(remoteFeed, feed.replicate(), remoteFeed, () => {
+      // when is done we can retrieve the log
+      const messages = []
+
+      const reader = feed.createReadStream()
+
+      const ws = writer((data, enc, next) => {
+        messages.push(data)
+        next()
+      })
+
+      pump(reader, ws, err => {
+        if (err) return reject(err)
+        resolve(messages)
       })
     })
-  }
+  })
 }

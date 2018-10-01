@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "flush-write-stream": "^1.0.3",
     "hypercore": "^6.19.1",
+    "pump": "^3.0.0",
     "random-access-memory": "^3.0.0"
   },
   "devDependencies": {
