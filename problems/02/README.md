@@ -1,4 +1,4 @@
-# 2 - Hypercore
+# 2 - Hypercore: un log para gobernarlos a todos
 
 [Hypercore](hypercore) es un modulo fundamental en la arquitectura de Dat.
 
