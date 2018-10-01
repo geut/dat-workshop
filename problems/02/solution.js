@@ -1,4 +1,3 @@
-const EventEmitter = require('events')
 const hypercore = require('hypercore')
 const ram = require('random-access-memory')
 

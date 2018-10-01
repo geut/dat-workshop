@@ -1,13 +1,5 @@
-# 1 - Conociendo Dat Project
+# 1 - Dat Cli
 > A distributed **dat**a community
-
-## Que es?
-
-Dat es una comunidad sin fines de lucro y un protocolo abierto que nos permite
-diseñar aplicaciones descentralizadas peer-to-peer.
-
-## Caracteristicas
-
 
 ## Instalacion
 
