@@ -33,7 +33,7 @@ considerarse como tal:
 1. Leer los mensajes de forma realtime.
 1. Conectar y desconectar usuarios al canal.
 
-Conemenzemos el desarrollo de nuestra Saga API :smile_cat:
+Comencemos el desarrollo de nuestra Saga API :smile_cat:
 
 ## Ejercicio
 
