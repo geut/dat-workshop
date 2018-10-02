@@ -17,7 +17,7 @@ Es una clave unica.
 
 Es la clave que reconocemos de los links de Dat `dat://<public-key>`.
 
-La utilizamos para encriptar nuestros mensajes, de forma que solo quienes tengan la Public Key podran leer los mensajes.
+La utilizamos para encriptar/desencriptar nuestros mensajes, de forma que solo quienes tengan la Public Key podran leer nuestro feed.
 
 Es nuestra responsabilidad compartirla de forma segura con nuestros `peers` de confianza.
 
@@ -42,13 +42,30 @@ Pero podria suceder que algun peer "maligno" se apodere de nuestra key y acceda 
 Para evitar compartir la public key, Dat ideo una tercera key que permite a los peers utilizarla para descubrirse
 entre ellos sin poner en riesgo nuestros datos encriptados.
 
+## Hypercore y la Public Key
+
+Como dijimos anteriormente, la public key sirve para encriptar/desencriptar los mensajes de nuestro feed. Eso quiere decir que
+si tenemos la key de un `feed remoto` (el feed de un peer de confianza) podriamos desencriptar los mensajes de su feed y
+leerlos.
+
+Para lograrlo, hypercore acepta un segundo parametro en su construcción:
+```javascript
+hypercore(<storage>,<public key>,<options>)
+```
+
+> Mas adelante veremos como es el proceso de sincronizar nuestro feed local con un feed remoto.
+
 ## Ejercicio
 
-Crear una funcion que reciba como parametro un `feed` y retorne
-una [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise#S%C3%BAper_simple_(%C2%A110_l%C3%ADneas!)
-con el objeto: `{ publicKey, secretKey, discoveryKey }`.
+1. Crear una funcion que reciba como parametro una `key` remota.
+2. Instanciar un feed con la key.
+3. Retornar una [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise#S%C3%BAper_simple_(%C2%A110_l%C3%ADneas!)
+con el objeto: `{ publicKey, discoveryKey }`.
+  * Cada key debe ser retornada en base hexadecimal.
 
-Cada key debe ser retornada en base hexadecimal.
+### Si te queda tiempo
+
+Que pasaria si intentas acceder al secretKey? :speak_no_evil:
 
 ## Test
 
@@ -64,3 +81,5 @@ Como podemos ver, tanto `hypercore` como muchos otros modulos
 heredan la interfaz de [EventEmitter](https://nodejs.org/api/events.html).
 1. Las keys son Node [Buffers](https://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end),
 podemos utilizar `toString` para convertirlos a lo que necesitemos.
+
+

@@ -3,12 +3,12 @@ const ram = require('random-access-memory')
 const pump = require('pump')
 const writer = require('flush-write-stream')
 
-module.exports = (key, remoteFeed) => {
+module.exports = (key, peer) => {
   const feed = hypercore(ram, key, { valueEncoding: 'utf8' })
 
   return new Promise((resolve, reject) => {
     // we need to sync our database with the remote one
-    pump(remoteFeed, feed.replicate(), remoteFeed, () => {
+    const onFinishSync = () => {
       // when is done we can retrieve the log
       const messages = []
 
@@ -23,6 +23,8 @@ module.exports = (key, remoteFeed) => {
         if (err) return reject(err)
         resolve(messages)
       })
-    })
+    }
+
+    pump(peer, feed.replicate(), peer, onFinishSync)
   })
 }
