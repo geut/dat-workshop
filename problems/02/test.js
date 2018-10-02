@@ -9,11 +9,11 @@ describe('problem 02', () => {
     expect(feed).toBeInstanceOf(hypercore)
   })
 
-  test('check RAM storage', () => {
+  test('RAM storage', () => {
     expect(feed._storage.key).toBeInstanceOf(ram)
   })
 
-  test('check append log', (done) => {
+  test('append log', (done) => {
     feed.get(0, (err, data) => {
       if (err) throw err
       expect(data).toEqual({ title: 'dat-is-freedom' })

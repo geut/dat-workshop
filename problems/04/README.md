@@ -41,7 +41,7 @@ Internamente `hypercore` utiliza Streams para cumplir sus objetivos.
 Podemos leer los datos de nuestro `feed` utilizando `feed.createReadStream` y mostrar los datos en pantalla:
 
 ```javascript
-feed.createReadStream().pipe(console.log)
+feed.createReadStream().pipe(process.stdout)
 ```
 
 Como veras `console.log` es un `WriteableStream` en donde el destino es escribir en pantalla.

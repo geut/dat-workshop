@@ -5,6 +5,7 @@
   * [Problema 3](/problems/03/)
   * [Problema 4](/problems/04/)
   * [Problema 5](/problems/05/)
+  * [Problema 6](/problems/06/)
 * [Terminologia](/docsify/terms)
 * Modulos
   * [hypercore](/hypercore)
