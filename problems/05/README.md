@@ -15,8 +15,8 @@ Hyperdb nos ofrece una base de datos key-value distribuida desarrollada arriba d
 de feeds de hypercore.
 
 Una de la features mas importantes es que agrega la posibilidad de tener `multiple-writters` lo cual
-llevaria a Dat al siguiente nivel, en donde multiples usuarios **previamente autorizados** podrian
-modificar el contenido de un recurso Dat. **Ya no existiria un solo owner**.
+llevaría a Dat al siguiente nivel, en donde múltiples usuarios **previamente autorizados** podrían
+modificar el contenido de un recurso Dat. **Ya no existiría un solo owner**.
 
 ## Saga
 
@@ -24,9 +24,9 @@ modificar el contenido de un recurso Dat. **Ya no existiria un solo owner**.
 
 Hyperdb es lo que necesitamos para poder avanzar en nuestro chat peer-to-peer.
 
-Necesitamos definir una API que permita a multiples usuarios escribir sobre un hyperdb distribuido.
+Necesitamos definir una API que permita a múltiples usuarios escribir sobre un hyperdb distribuido.
 
-Que escribiriamos? Lo que quisieramos pero en este caso enfoquemonos en lo que necesita un chat para
+Que escribiríamos? Lo que quisiéramos pero en este caso enfoquemonos en lo que necesita un chat para
 considerarse como tal:
 
 1. Escribir mensajes en el chat.
@@ -43,8 +43,8 @@ Comencemos el desarrollo de nuestra Saga API :smile_cat:
   * La instancia de hyperdb, bajo la prop: `db`
   * El username, bajo la prop: `username`
   * Un [Map](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Map)
-  de usuarios (inicialmente vacio): `users`
-  * Un Map de mensajes (incialmente vacio): `messages`
+  de usuarios (inicialmente vació): `users`
+  * Un Map de mensajes (inicialmente vació): `messages`
 
 ## Test
 

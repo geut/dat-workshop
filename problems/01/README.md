@@ -1,7 +1,7 @@
 # 1 - Dat Cli
 > A distributed **dat**a community
 
-## Instalacion
+## Instalación
 
 ```
 $ npm install -g dat
