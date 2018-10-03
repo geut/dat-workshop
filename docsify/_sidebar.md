@@ -1,4 +1,4 @@
-* [Introdución](/)
+* [Introducción](/)
 * Problemas
   * [Problema 1](/problems/01/)
   * [Problema 2](/problems/02/)
@@ -6,8 +6,9 @@
   * [Problema 4](/problems/04/)
   * [Problema 5](/problems/05/)
   * [Problema 6](/problems/06/)
-* [Terminologia](/docsify/terms)
-* Modulos
+  * [Problema 7](/problems/07/)
+* [Terminología](/docsify/terms)
+* Módulos
   * [hypercore](/hypercore)
   * [random-access-memory](/random-access-memory)
   * [pump](/pump)

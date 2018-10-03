@@ -1,5 +1,5 @@
 const ram = require('random-access-memory')
-const Saga = require('./solution')
+const Saga = require('.')
 
 describe('problem 07', () => {
   const saga = new Saga(ram, null, 'peti')
