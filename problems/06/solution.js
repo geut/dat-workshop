@@ -10,10 +10,6 @@ module.exports = class Saga {
     this.db = hyperdb(storage, key, { valueEncoding: 'json' })
   }
 
-  ready () {
-    return new Promise(resolve => this.db.ready(resolve))
-  }
-
   writeMessage (message) {
     const key = `messages/${uuid()}`
     const data = {

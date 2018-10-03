@@ -1,7 +1,7 @@
 const ram = require('random-access-memory')
 const Saga = require('.')
 
-describe('problem 05', () => {
+describe('problem 06', () => {
   const saga = new Saga(ram, null, 'peti')
 
   const readMessage = id => {
@@ -12,12 +12,6 @@ describe('problem 05', () => {
       })
     })
   }
-
-  test('ready method', async () => {
-    expect.assertions(1)
-    const result = await saga.ready()
-    expect(result).toBeNull()
-  })
 
   test('writeMessage method', async () => {
     expect.assertions(1)
