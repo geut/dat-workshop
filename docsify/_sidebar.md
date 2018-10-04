@@ -9,6 +9,7 @@
   * [Problema 7](/problems/07/)
 * [Terminología](/docsify/terms)
 * Módulos
+  * [dat](/dat)
   * [hypercore](/hypercore)
   * [random-access-memory](/random-access-memory)
   * [pump](/pump)
