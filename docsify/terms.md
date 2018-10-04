@@ -22,4 +22,4 @@ Es utilizado para sincronizar feeds.
 Podemos definir a un swarm como un grupo de peers conectados para un proposito, servicio o recurso mutuo.
 
 ## peer
-Llamamos peer a cualquier nodo con IP:PORT conectado a un red.
+Llamamos _peer_ a cualquier nodo con IP:PORT conectado a un red.
