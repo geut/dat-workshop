@@ -1,11 +1,11 @@
-# 4 - Todo se trata de Streams
+# 4 - Todo se trata de streams
 
-## Introducción a los Streams de Node
+## Introducción a streams
 
-Si has programado en Node.js es muy probable que hayas usado [Streams](https://nodejs.org/api/stream.html)
+Si has programado en Node.js es muy probable que hayas usado [streams](https://nodejs.org/api/stream.html)
 sin siquiera saberlo.
 
-De hecho, son tan importantes que forman parte del core de Node. Cada request o response de tu
+De hecho, son tan importantes que forman parte del core de Node. Cada _request_ o _response_ de tu
 servidor, cada `console.log` u operación sobre el filesystem involucra algún tipo de stream. :boom:
 
 Un stream es una interfaz que representa una secuencia de datos `a---b---c` en el tiempo y en donde
@@ -13,13 +13,13 @@ la información fluye desde una _fuente_ hacia un _destino_.
 
 Los streams nos permiten por ejemplo leer un archivo por partes (chunks) a través de un `ReadableStream`,
 aplicarle algún tipo de transformación por medio de un `TransformStream` y escribir cada chunk modificado
-en un destino particular con un `WriteableStream`.
+en un destino particular con un `WritableStream`.
 
 Los streams pueden operar en un solo sentido como un ReadableStream que solo lee de una fuente
 y envía sus datos al siguiente stream:
 
 ```
-ReadableStream ---> ( TransformStream | WriteableStream )
+ReadableStream ---> ( DuplexStream | TransformStream ) ---> WriteableStream
 ```
 
 Pero también existen los `DuplexStream` que permiten operaciones tanto de lectura como escritura.
@@ -44,7 +44,7 @@ Podemos leer los datos de nuestro `feed` utilizando `feed.createReadStream` y mo
 feed.createReadStream().pipe(process.stdout)
 ```
 
-Como veras, `console.log` es un `WriteableStream` en donde el destino es escribir en pantalla.
+Como veras, `console.log` es un `WritableStream` en donde el destino es escribir en pantalla.
 
 Utilizamos el método `pipe` para conectar y definir el flujo de datos de nuestros streams.
 
@@ -67,8 +67,8 @@ con los datos que ya tenemos. A este proceso lo llamamos `replicacion`.
 Queremos _replicar_ los datos del feed remoto en nuestro feed local.
 
 Para poder lograrlo, volvemos a utilizar streams. Hypercore API ofrece un `feed.replicate()` que retorna un
-`TransformStream` el cual lee la data de un feed remoto, la incorpora a su feed local y finalmente pasa el resultado
-al siguiente stream.
+_replication stream_ el cual lee la data de un feed remoto, la incorpora a su feed local y finalmente pasa el resultado
+al siguiente stream, es decir se comporta como un `DuplexStream`.
 
 ![replicate](images/replicate.png)
 
@@ -91,13 +91,12 @@ para que se actualice en caso de tener data inconsistente.
 
 ## Ejercicio
 
-1. Crear una función que:
-  * Reciba una key y un peer remoto.
-  * Retorne una promesa
-2. La función debe sincronizar el feed local.
-3. Una vez finalizada la sincronización, leer los datos del feed y cargar
+Vamos a simular leer mensajes que otro peer escribio. Para eso:
+
+1. Vamos a sincronizar el feed local (con el del peer).
+2. Una vez finalizada la sincronización, leeremos los datos del feed y cargaremos
 cada mensaje en un array.
-4. Una vez finalizada la lectura del feed, retornar el listado de mensajes.
+3. Una vez finalizada la lectura del feed, retornar el listado de mensajes.
 
 ## Test
 
@@ -116,7 +115,7 @@ Nosotros queremos que si algún stream se destruye (intencionalmente o por error
 los streams conectados también lo hagan. Por eso vamos a utilizar el modulo [pump](/pump)
 para remplazar a pipe.
 
-Pump nos permite `pipear` nuestros streams y asegurarnos que en caso de que uno se destruya, todos lo hagan. :cool:
+Pump nos permite _pipear_ nuestros streams y asegurarnos que en caso de que uno se destruya, todos lo hagan. :cool:
 
 > Como feature extra, el último argumento de pump puede ser una función que se ejecuta
 cuando finalizan todos los streams.
@@ -131,13 +130,13 @@ pump(a, b, c, err => {
 })
 ```
 
-### 2 - Transformar datos
+### 2 - Lectura/Escritura de datos
 
-Imaginen al `TransformStream` como un `[].map` o un `[].forEach`.
+Imaginen al `Duplex Stream` como un `[].map` o un `[].forEach`.
 
-El objetivo es iterar sobre los _chunks_ que recibimos de un ReadableStream o de otro TransformStream.
+El objetivo es iterar sobre los _chunks_ que recibimos de otro stream y escribirlos (_pushearlos_) a otro stream.
 
-Construir un `TransformStream` no es tarea fácil, **pero esto es Node muchaches!**,
-o sea, tenemos un modulo que lo resuelve por nosotres: [flush-write-stream](/flush-write-stream). :tada:
+Construir un `WritableStream` seguro no es tarea fácil, **pero esto es Node muchaches!**,
+o sea, tenemos un modulo que lo resuelve por nosotres: [flush-write-stream](/flush-write-stream). :tada: :stuck_out_tongue_winking_eye:
 
 

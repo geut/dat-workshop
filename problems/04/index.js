@@ -4,33 +4,37 @@ const pump = require('pump')
 const writer = require('flush-write-stream')
 
 /**
- * 1. You need a ReadableStream to read the data from the feed
- * 2. Append each message in the messages list
- * 3. Pipe your streams in order to work
- * 4. Pipe your streams to accomplish the replication process
+ * Note: if you are not familiar with `pump` please check
+ * the tips section!
+ *
+ * Note: if you are not familiar with `flush-write-stream` please check
+ * the tips section!
  */
 module.exports = (key, peer) => {
   const feed = hypercore(ram, key, { valueEncoding: 'utf8' })
 
   return new Promise((resolve, reject) => {
-    // we need to sync our database with the remote one
     const onFinishSync = () => {
-      // when is done we can retrieve the log
-      const messages = []
+      // Cool, our feed is loaded, now we can continue...
+      const messageList = []
 
-      // const reader = (1)
+      // 2 - You need a ReadableStream to read the data from the feed
+      // const reader =
 
-      // our transform to process the data of the ReadableStream
+      // we need to sync our database with the remote one
       const ws = writer((data, enc, next) => {
-        // (2)
+        // 3 - Append each message into the list
+        // Think about this writer as a normal writable stream writers method
       })
 
-      // pump(reader, (3), err => {
-      //   if (err) return reject(err)
-      //   resolve()
-      // }
+      // 4 - Pump your streams
+      // pump(reader, /* a stream */, err => {
+      //  if (err) return reject(err)
+      //  resolve(/* data */)
+      // })
     }
 
-    // pump(peer, (4))
+    // 1 - Pipe your streams and replicate!
+    // pump(peer, /* replication */, /* target */, onFinishSync)
   })
 }
