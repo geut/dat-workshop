@@ -13,5 +13,4 @@
   * [hypercore](/hypercore)
   * [random-access-memory](/random-access-memory)
   * [pump](/pump)
-  * [flush-write-stream](/flush-write-stream)
   * [codecs](/codecs)

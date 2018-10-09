@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "flush-write-stream": "^1.0.3",
     "hypercore": "^6.19.1",
     "hyperdb": "^3.5.0",
     "hyperid": "^1.4.1",
