@@ -133,9 +133,9 @@ pump(a, b, c, err => {
 ### 2 - Lectura/Escritura de datos
 
 Un WritableStream nos permite iterar sobre los _chunks_ que fluyen en los streams y
-escribirlos en donde querramos: disco, network, screen o inclusive en nuestra memoria.
+escribirlos en donde queramos: disco, network, screen o inclusive en nuestra memoria.
 
 Sabiendo esto, podemos definir un WritableStream que itere sobre los _chunks_ de forma similar a un `[].forEach`
 y guardarlos en la estructura (un `Map` por ejemplo) que necesitemos.
 
-Les recomendamos que investiguen `forEachChunk`, una funcion que armamos para ayudarlos a cumplir su objetivo.
+Les recomendamos que investiguen `forEachChunk`, una función que armamos para ayudarlos a cumplir su objetivo.
