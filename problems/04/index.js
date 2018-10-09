@@ -1,13 +1,10 @@
 const hypercore = require('hypercore')
 const ram = require('random-access-memory')
 const pump = require('pump')
-const writer = require('flush-write-stream')
+const forEachChunk = require('../../lib/for-each-chunk')
 
 /**
  * Note: if you are not familiar with `pump` please check
- * the tips section!
- *
- * Note: if you are not familiar with `flush-write-stream` please check
  * the tips section!
  */
 module.exports = (key, peer) => {
@@ -15,15 +12,16 @@ module.exports = (key, peer) => {
 
   return new Promise((resolve, reject) => {
     const onFinishSync = () => {
-      // Cool, our feed is loaded, now we can continue...
+      // Cool, our feed is syncronized, now we can continue...
       const messageList = []
 
       // 2 - You need a ReadableStream to read the data from the feed
       // const reader =
 
-      const ws = writer((data, enc, next) => {
+      const ws = forEachChunk((chunk, enc, next) => {
         // 3 - Append each message into the list
-        // Think about this writer as a normal writable stream writers method
+        // Think about this writer as a normal [].forEach
+        // but remember to call next() after processing your chunk
       })
 
       // 4 - Pump your streams

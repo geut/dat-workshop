@@ -132,7 +132,10 @@ pump(a, b, c, err => {
 
 ### 2 - Lectura/Escritura de datos
 
-El objetivo es iterar sobre los _chunks_ que recibimos de otro stream y escribirlos (_pushearlos_) a otro stream.
+Un WritableStream nos permite iterar sobre los _chunks_ que fluyen en los streams y
+escribirlos en donde querramos: disco, network, screen o inclusive en nuestra memoria.
 
-En lugar de usar un `WritableStream` nativo de node, usaremo un modulo del ecosistema: [flush-write-stream](/flush-write-stream), que nos ayuda a resolver el problema de limpiar (flush :toilet:) el stream cuando terminamos de usarlo. :stuck_out_tongue_winking_eye:
+Sabiendo esto, podemos definir un WritableStream que itere sobre los _chunks_ de forma similar a un `[].forEach`
+y guardarlos en la estructura (un `Map` por ejemplo) que necesitemos.
 
+Les recomendamos que investiguen `forEachChunk`, una funcion que armamos para ayudarlos a cumplir su objetivo.

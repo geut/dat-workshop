@@ -1,8 +1,9 @@
 const EventEmitter = require('events')
 const hyperdb = require('hyperdb')
 const hyperid = require('hyperid')
-const writer = require('flush-write-stream')
 const pump = require('pump')
+const forEachChunk = require('../../lib/for-each-chunk')
+
 const uuid = hyperid()
 
 /**
@@ -50,7 +51,7 @@ module.exports = class Saga extends EventEmitter {
   _updateHistory (onFinish) {
     // const h = (1)
 
-    const ws = writer.obj((data, enc, next) => {
+    const ws = forEachChunk({ objectMode: true }, (data, enc, next) => {
       const { key, value } = data
 
       if (/messages/.test(key)) {
