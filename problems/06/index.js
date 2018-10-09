@@ -1,5 +1,5 @@
 const hyperdb = require('hyperdb')
-const hyperid = require('hyperid')
+const hyperid = require('hyperid')()
 
 module.exports = class Saga {
   constructor (storage, key, username) {
@@ -12,7 +12,7 @@ module.exports = class Saga {
   ready () {}
 
   writeMessage (message) {
-    const key = '...'
+    const key = '...' // this key should be unique
     const data = {}
 
     return new Promise((resolve, reject) => {
