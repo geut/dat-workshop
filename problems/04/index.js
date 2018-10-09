@@ -21,7 +21,6 @@ module.exports = (key, peer) => {
       // 2 - You need a ReadableStream to read the data from the feed
       // const reader =
 
-      // we need to sync our database with the remote one
       const ws = writer((data, enc, next) => {
         // 3 - Append each message into the list
         // Think about this writer as a normal writable stream writers method

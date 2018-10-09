@@ -132,11 +132,7 @@ pump(a, b, c, err => {
 
 ### 2 - Lectura/Escritura de datos
 
-Imaginen al `Duplex Stream` como un `[].map` o un `[].forEach`.
-
 El objetivo es iterar sobre los _chunks_ que recibimos de otro stream y escribirlos (_pushearlos_) a otro stream.
 
-Construir un `WritableStream` seguro no es tarea fácil, **pero esto es Node muchaches!**,
-o sea, tenemos un modulo que lo resuelve por nosotres: [flush-write-stream](/flush-write-stream). :tada: :stuck_out_tongue_winking_eye:
-
+En lugar de usar un `WritableStream` nativo de node, usaremo un modulo del ecosistema: [flush-write-stream](/flush-write-stream), que nos ayuda a resolver el problema de limpiar (flush :toilet:) el stream cuando terminamos de usarlo. :stuck_out_tongue_winking_eye:
 
