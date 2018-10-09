@@ -1,6 +1,6 @@
 # 3 - La clave es la clave
 
-En el problema anterior vimos como instanciar un `feed` de Hypercore y
+En el problema anterior vimos cómo instanciar un `feed` de Hypercore y
 mencionamos la palabra `seguridad`.
 
 Tanto Hypercore como todo el ecosistema de Dat trabajan con el concepto de
@@ -11,7 +11,7 @@ compartirlos con otros [peers](/docsify/terms).
 
 Existen 3 keys para tener en cuenta:
 
-### Public Key
+### Public Key :key:
 
 Es una clave única.
 
@@ -21,7 +21,7 @@ La utilizamos para encriptar/desencriptar nuestros mensajes, de forma que solo q
 
 Es nuestra responsabilidad compartirla de forma segura con nuestros `peers` de confianza.
 
-### Secret Key
+### Secret Key :closed_lock_with_key:
 
 Dat actualmente maneja una arquitectura de single-writer / multiple-readers. Solo el `owner` del `feed` es
 decir, el dueño de la Secret Key podrá escribir sobre el log.
@@ -29,12 +29,12 @@ decir, el dueño de la Secret Key podrá escribir sobre el log.
 > Hablamos de single-writer, pero eso pronto va a cambiar en Dat a multiple-writer. Nosotros no te queremos
 hacer esperar, así que mas adelante veremos como utilizar el futuro de Dat, hoy :rocket:.
 
-### Discovery Key
+### Discovery Key :earth_americas:
 
 Mas adelante veremos mejor el concepto de `discovery` pero en este momento consideremos que los peers son
 computadoras aisladas que quieren encontrarse y compartir un recurso, en este caso nuestro `feed`.
 
-Podríamos reconocer a nuestro `feed` por su clave unica `Public Key` y que nuestros peers intercambien información sobre quien
+Podríamos reconocer a nuestro `feed` por su clave única `public key` y que nuestros peers intercambien información sobre quien
 tiene dicha clave.
 
 Pero podría suceder que algún peer "maligno" se apodere de nuestra key y acceda a nuestros datos.
@@ -57,15 +57,14 @@ hypercore(<storage>,<public key>,<options>)
 
 ## Ejercicio
 
-1. Crear una función que reciba como parámetro una `key` remota.
-2. Instanciar un feed con la key.
-3. Retornar una [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise#S%C3%BAper_simple_(%C2%A110_l%C3%ADneas!)
+1. Instanciar un feed usando la key remota.
+2. Retornar una [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise#S%C3%BAper_simple_(%C2%A110_l%C3%ADneas!)
 con el objeto: `{ publicKey, discoveryKey }`.
-  * Cada key debe ser retornada en base hexadecimal.
+  * Cada key debe ser retornada en base hexadecimal (`hex`).
 
 ### Si te queda tiempo
 
-Que pasaría si intentas acceder al secretKey? :speak_no_evil:
+Que pasaría si intentas acceder al `secretKey`? :speak_no_evil:
 
 ## Test
 
