@@ -11,6 +11,9 @@
 * Módulos
   * [dat](/dat)
   * [hypercore](/hypercore)
+  * [hyperdb](/hyperdb)
   * [random-access-memory](/random-access-memory)
   * [pump](/pump)
+  * [flush-write-stream](/flush-write-stream)
+  * [hyperid](/hyperid)
   * [codecs](/codecs)

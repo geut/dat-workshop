@@ -11,7 +11,7 @@ module.exports = class Saga {
   }
 
   writeMessage (message) {
-    const key = `messages/${uuid()}`
+    const key = `/messages/${uuid()}`
     const data = {
       key,
       message,

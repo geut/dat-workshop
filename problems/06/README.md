@@ -1,6 +1,6 @@
-# 6 - Escribir mensajes
+# 6 - Escribiendo mensajes
 
-Una parte esencial en nuestra API de Saga es la posibilidad de escribir mensajes en la db.
+Una parte esencial en la API de Saga es la posibilidad de escribir mensajes en la db.
 
 Hyperdb provee diferentes métodos para escribir data en la db, uno de ellos es:
 
@@ -8,12 +8,12 @@ Hyperdb provee diferentes métodos para escribir data en la db, uno de ellos es:
   db.put(key, value, cb)
 ```
 
-Como dijimos anteriormente hyperdb es una key-value database, esto quiere decir que si
+Como dijimos anteriormente hyperdb es una base de datos key-value, esto quiere decir que si
 ejecutamos: `.put('/test', 'hi!')` el valor quedara guardado en la key `/test`.
 
-Vieron la `/` que agregamos a la key? `Hyperdb tiene soporte para namespaces`, similar a redis.
+:microscope: Vieron la `/` que agregamos a la key? `Hyperdb tiene soporte para namespaces`, similar a _redis_.
 
-Podemos por ejemplo leer todos los valores relacionados a un namespace particular y sus subfolders:
+Podemos, a modo de ejemplo, leer todos los valores relacionados a un _namespace_ particular y sus _subfolders_:
 
 ```javascript
 db.put('/test/1', 'hi')
@@ -30,18 +30,18 @@ db.put('/test/2', 'how are you?', () => {
 
 Definir dos nuevos métodos de instancia para Saga.
 
-`ready -> Promise`
+1. `ready -> Promise`
 Método que retorne una promesa y que se resuelve cuando la db esta `ready`.
+2. `writeMessage(message: string) -> Promise`
+Método que recibe como parámetro un `string` y retorna una **Promise**.
 
-`writeMessage(message: string) -> Promise`
-Método que recibe como parámetro un `string` y retorna una Promise.
 Pero debemos tener en cuenta algunas cosas mas:
-1. La Promise se resuelve cuando se termina de escribir y debe retornar la key del mensaje.
-Si la escritura falla, debería hacer un `reject` con el error.
-1. No solo debemos guardar el mensaje sino también información adicional sobre el mismo:
-`{ key, message, username, timestamp }`
-1. Los mensajes se deben guardar bajo el namespace: `messages/<messageKey>`
-1. Las key deben ser únicas.
+  - La **promise** se resuelve cuando se termina la operación de escritura y debe retornar la key del mensaje.
+  Si la escritura falla, debería hacer un `reject` con el error.
+  - No solo debemos guardar el mensaje sino también información adicional sobre el mismo:
+  `{ key, message, username, timestamp }`
+  - Los mensajes se deben guardar bajo el namespace: `/messages/<messageKey>`.
+  - Las key deben ser únicas.
 
 ## Test
 
@@ -51,6 +51,6 @@ $ npm test 06
 
 ## Tips
 
-La mejor forma de definir una key única es utilizar algún generador de IDs. Te recomendamos
-que investigues: [hyperid](https://github.com/mcollina/hyperid)
+- La mejor forma de definir una key única es utilizar algún generador de IDs. Te recomendamos
+que investigues: [hyperid](hyperid)
 
