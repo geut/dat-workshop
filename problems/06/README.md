@@ -40,7 +40,7 @@ Pero debemos tener en cuenta algunas cosas mas:
   Si la escritura falla, debería hacer un `reject` con el error.
   - No solo debemos guardar el mensaje sino también información adicional sobre el mismo:
   `{ key, message, username, timestamp }`
-  - Los mensajes se deben guardar bajo el namespace: `messages/<messageKey>`.
+  - Los mensajes se deben guardar bajo el namespace: `/messages/<messageKey>`.
   - Las key deben ser únicas.
 
 ## Test
