@@ -1,7 +1,7 @@
 const hypercore = require('hypercore')
 const ram = require('random-access-memory')
 const pump = require('pump')
-const writer = require('flush-write-stream')
+const forEachChunk = require('../../lib/for-each-chunk')
 
 module.exports = (key, peer) => {
   const feed = hypercore(ram, key, { valueEncoding: 'utf8' })
@@ -14,7 +14,7 @@ module.exports = (key, peer) => {
 
       const reader = feed.createReadStream()
 
-      const ws = writer((data, enc, next) => {
+      const ws = forEachChunk((data, enc, next) => {
         messages.push(data)
         next()
       })
