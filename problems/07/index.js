@@ -7,12 +7,12 @@ const forEachChunk = require('../../lib/for-each-chunk')
 const uuid = hyperid()
 
 /**
- * 0 - We the db is ready we need to update our history of messages and start watching for new messages
+ * 0 - When the db is ready we need to update our messages history and start watching for new messages
  * 1 - Create a reader history stream and iterate in reverse mode
- * 2 - Destroy the stream process if we already have all the messages
+ * 2 - When we have all the messages, destroy the stream
  * 3 - Push each new message in the Map messages
  * 4 - Emit a `message` event with the data and the key as arguments
- * 5 - Pipe our transform stream and call a function when the process is done
+ * 5 - Pipe into our write stream and call a function when the process is done
  * 6 - We need to watch the namespace `messages/*` to detect when there are new messages
  */
 module.exports = class Saga extends EventEmitter {
@@ -28,11 +28,11 @@ module.exports = class Saga extends EventEmitter {
   async initialize () {
     await this._ready()
 
-    // (0)
+    this._updateHistory(/* ... */)
   }
 
   writeMessage (message) {
-    const key = `messages/${uuid()}`
+    const key = `/messages/${uuid()}`
     const data = {
       key,
       message,
@@ -51,9 +51,10 @@ module.exports = class Saga extends EventEmitter {
   _updateHistory (onFinish) {
     // const h = (1)
 
+    // forEachChunk returns a stream
     const ws = forEachChunk({ objectMode: true }, (data, enc, next) => {
       const { key, value } = data
-
+      // Note: since we are reading on reverse order... If we already have the last one, we have'em all
       if (/messages/.test(key)) {
         if (this.messages.has(key)) {
           // (2)
@@ -61,7 +62,9 @@ module.exports = class Saga extends EventEmitter {
         }
 
         // (3)
+
         // (4)
+
       }
 
       next()
@@ -72,9 +75,10 @@ module.exports = class Saga extends EventEmitter {
 
   _watchForMessages () {
     // (6)
+
   }
 
   _ready () {
-    return new Promise(resolve => this.db.ready(resolve))
+    return new Promise(resolve => this.db.on('ready', resolve))
   }
 }
