@@ -7,6 +7,7 @@
   * [Problema 5](/problems/05/)
   * [Problema 6](/problems/06/)
   * [Problema 7](/problems/07/)
+  * [Problema 8](/problems/08/)
 * [Terminología](/docsify/terms)
 * Módulos
   * [dat](/dat)
