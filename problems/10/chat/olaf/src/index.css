@@ -1,0 +1,42 @@
+@import 'tachyons';
+@import 'balloon-css/balloon.min.css';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: #004466;
+  background-color: #00ffa2;
+}
+/*
+.olaf__message:before {
+  position: relative;
+  float: left;
+  content: '';
+  margin: 7px 0 0 -8px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 8px 8px 0;
+  border-color: transparent #fff transparent transparent;
+}
+*/
+.break-word {
+  overflow-wrap: break-word;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(17, 17, 17, 0.51);
+}
+
+.icon-button {
+  width: 40px;
+  padding: 10px;
+  height: 40px;
+}
