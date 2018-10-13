@@ -8,6 +8,7 @@
   * [Problema 6](/problems/06/)
   * [Problema 7](/problems/07/)
   * [Problema 8](/problems/08/)
+  * [Problema 9](/problems/09/)
 * [Terminología](/docsify/terms)
 * Módulos
   * [dat](/dat)
@@ -18,3 +19,4 @@
   * [flush-write-stream](/flush-write-stream)
   * [hyperid](/hyperid)
   * [codecs](/codecs)
+  * [geut-discovery-swarm-webrtc](/geut-discovery-swarm-webrtc)

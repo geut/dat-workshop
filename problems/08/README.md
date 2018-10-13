@@ -1,4 +1,4 @@
-# 8 - Autorizando a otros peers :horse: :hamster: :rabbit: 
+# 8 - Autorizando a otros peers :horse: :hamster: :rabbit:
 
 Hasta ahora todo lo que hemos visto ha involucrado pruebas locales con nuestra db pero no hemos interactuado mucho con el resto de nuestros compas.
 
@@ -18,7 +18,7 @@ Recuerdan que estamos usando hypercore y encima de el, hyperdb. Hagamos un breve
 
 ## Cómo permitimos a otros peers qué escriban en nuestro feed?
 
-Funciona de la siguiente manera: una operación de escritura en el feed del autor original (el creador de nuestro chat, en nuestro caso), indica que determinado peer puede escribir. La forma de identificar al peer es mediante su clave pública (`PK`), es decir, este peer :horse: debe pasarme su `PK` de alguna forma. 
+Funciona de la siguiente manera: una operación de escritura en el feed del autor original (el creador de nuestro chat, en nuestro caso), indica que determinado peer puede escribir. La forma de identificar al peer es mediante su clave pública (`PK`), es decir, este peer :horse: debe pasarme su `PK` de alguna forma.
 
 Internamente, hyperdb **escribe** en el feed, como si fuera un mensaje mas (aunque es un mensaje especial), que determinado peer :horse: puede escribir.
 
@@ -26,6 +26,12 @@ Internamente, hyperdb **escribe** en el feed, como si fuera un mensaje mas (aunq
 
 1. `Saga` debe soportar un nuevo metodo (API) que le permitira autorizar a un peer. Este método `_authorize` recibirá como parámetro una `PK`.
 2. Este nuevo método retorna una promesa que cuando resuelve exitosamente entrega un string: `AUTHORIZED`, y cuando hace el reject, devuelve el error.
+
+## Test
+
+```
+$ npm test 08
+```
 
 ## Tips
 
