@@ -15,6 +15,11 @@ Introduce the audience to Dat and its core modules. Learn about P2P architecture
 
 Please first, clone this repo and then run `npm install`. This way we are going to save installation time on the workshop and we will ready to start immediately.
 
+## Running the workshop
+
+1. `npm start`, will launch a docsify instance with the whole workshop on it.
+2. There is no step 2 :stuck_out_tongue_closed_eyes:
+
 ### What is Dat?
 
 Dat is a community and an open source data-sharing protocol for applications of the future.
