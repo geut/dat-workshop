@@ -36,7 +36,6 @@ It's important to say thanks, so here it is a big thanks to:
 - Max Ogden
 - **and many others!**
 
-Special thanks to Karissa McKelvey, her work on [chatmesh](https://github.com/karissa/chatmesh-db) was
-where everything starts for our workshop.
+Special thanks to Karissa McKelvey, her work on [chatmesh](https://github.com/karissa/chatmesh-db) (and early work on cabal) was a huge inspiration for this workshop.
 
 
