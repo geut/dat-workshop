@@ -28,10 +28,15 @@ Dat is a community and an open source data-sharing protocol for applications of 
 
 It's important to say thanks, so here it is a big thanks to:
 
+- Karissa McKelvey
 - Mathias Buus
 - Tara Vancil
 - Paul Frazee
 - Jim Pick
 - Max Ogden
 - **and many others!**
+
+Special thanks to Karissa McKelvey, her work on [chatmesh](https://github.com/karissa/chatmesh-db) was
+where everything starts for our workshop.
+
 
