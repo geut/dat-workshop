@@ -20,7 +20,7 @@ async function initChat (username, key) {
   // (2)
   // creating a signalhub instance...
   const discoveryKey = /* ... */
-  const signalUrls = process.env.SIGNAL_URLS ? process.env.SIGNAL_URLS.split(',') : ['http://localhost:4000']
+  const signalUrls = ['https://signalhub-jccqtwhdwc.now.sh/']
 
   sw.join(signalhub(discoveryKey, signalUrls), webrtcOpts)
 

@@ -4,7 +4,7 @@
       "@babel/env",
       {
         "targets": {
-          "browsers": "last 2 chrome versions"
+          "browsers": "last 10 chrome versions"
         }
       }
     ]
