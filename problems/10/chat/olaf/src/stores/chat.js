@@ -135,7 +135,7 @@ function store (state, emitter) {
   function joinFriend (user) {
     const index = state.chat.friends.findIndex(u => u.username === user.username)
     if (index !== -1) state.chat.friends.splice(index, 1)
-    const friendColor = rcolor(0.99, 0.99)
+    const friendColor = rcolor(0.3, 0.99)
     user.color = friendColor.hexString()
     state.chat.colors[user.username] = user.color
     state.chat.friends.push(user)

@@ -40,7 +40,7 @@ module.exports = class InputMsg extends Component {
               name="chat-msg"
               id="input-msg">
             <input
-              class="dn db-ns f6 f5-ns button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
+              class="dn db-ns f6 f5-ns button-reset fl pv3 tc bn bg-animate bg-green washed-green ba b--green pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
               type="submit"
               value="Send"
               onclick=${this.sendMessage}>

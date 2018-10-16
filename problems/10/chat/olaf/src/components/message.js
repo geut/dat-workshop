@@ -67,19 +67,22 @@ class Message extends Component {
       .catch(console.log)
   }
 
-  createElement (props, color = 'black') {
+  createElement (props, color = 'green') {
     const { username, message, timestamp } = props
     const { extra } = this.local
 
     this.local.message = message
 
     const date = stamp(new Date(timestamp))
+
+    const colorStyle = color ? `color: ${color}` : ''
+
     return html`
       <div class="flex h-auto mt3 tl" style="min-height:2rem">
         <div class="flex olaf__message bg-white w-auto br3 ba b--white">
           <div class="flex flex-column w-90">
             <div class="flex h2 mt1 ml2 w4">
-              <div class="dib f7 f6-ns mw4 truncate"><span style="color: ${color}">${username}</span></div>
+              <div class="dib f7 f6-ns mw4 truncate"><span style='${colorStyle}'>${username}</span></div>
             </div>
             <div class="flex">
               <p class="dib f7 f6-ns pa1 pl0 pl0-ns f5-ns ml2 lh-copy mv0" style="word-break: break-all;">

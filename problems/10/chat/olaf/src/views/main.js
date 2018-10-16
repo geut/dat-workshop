@@ -10,12 +10,18 @@ const KeyModal = require('../components/key-modal')
 
 module.exports = view
 
+const THEME = {
+  light: 'dark-gray bg-washed-red',
+  dark: 'moon-gray bg-navy'
+}
+
 function view (state, emit) {
   const { username, key, init } = state.chat
-  const { showModalKey } = state.ui
+  const { showModalKey, toggleTheme } = state.ui
+  const theme = toggleTheme ? THEME.light : THEME.dark
 
   return html`
-    <body class="code lh-copy">
+    <body class="code lh-copy ${theme}">
       <main class="pa3 flex flex-column dt w-100 h-100">
         ${header(state, emit)}
         <div class="flex w-100 justify-between flex-column-reverse flex-row-ns flex-grow-1">
