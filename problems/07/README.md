@@ -1,4 +1,4 @@
-# 7 - Mensajes
+# 7 - Mensajes en tiempo real :watch:
 
 Ok :cool:, ya hemos conseguido escribir mensajes usando nuestra API `Saga`. En algún momento estos mensajes se replicarán y llegarán
 a cada peer conectado.
