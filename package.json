@@ -9,7 +9,6 @@
     "balloon-css": "^0.5.0",
     "choo": "^6.13.0",
     "choo-devtools": "^2.5.1",
-    "choo-service-worker": "^2.4.0",
     "copy-to-clipboard": "^3.0.8",
     "file-type": "^9.0.0",
     "flush-write-stream": "^1.0.3",
