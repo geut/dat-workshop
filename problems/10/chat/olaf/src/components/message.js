@@ -25,14 +25,14 @@ const parseMessage = message => {
       const ab = await response.arrayBuffer()
       const ft = fileType(ab)
       if (ft && ft.mime.includes('image')) {
-        return html`<img class="mw-100" style="height: 300px"src="${anchorData.raw}"/>`
+        return html`<div class='flex'><img class="mw-100" style="height: 300px"src="${anchorData.raw}"/></div>`
       } else return ''
     })).then(out => {
       // prepare output
       var f = anchorme(message)
       console.log(f)
       return html`
-        <span class="lh-copy">
+        <span class="flex flex-column lh-copy pa2">
           ${out.filter(img => img)}
         </span>
       `
@@ -78,25 +78,27 @@ class Message extends Component {
     const colorStyle = color ? `color: ${color}` : ''
 
     return html`
-      <div class="flex h-auto mt3 tl" style="min-height:2rem">
-        <div class="flex olaf__message bg-white w-auto br3 ba b--white">
-          <div class="flex flex-column w-90">
-            <div class="flex h2 mt1 ml2 w4">
-              <div class="dib f7 f6-ns mw4 truncate"><span style='${colorStyle}'>${username}</span></div>
-            </div>
-            <div class="flex">
-              <p class="dib f7 f6-ns pa1 pl0 pl0-ns f5-ns ml2 lh-copy mv0" style="word-break: break-all;">
-                ${raw(anchorme(message))}
-              </p>
+      <div class="flex flex-column h-auto mt3 tl" style="min-height:2rem">
+        <div class="flex flex-column olaf__message bg-white w-auto br3 ba b--white">
+          <div class="flex">
+            <div class="flex flex-column w-90">
+              <div class="flex h2 mt1 ml2 w4">
+                <div class="dib f7 f6-ns mw4 truncate"><span style='${colorStyle}'>${username}</span></div>
+              </div>
+              <div class="flex">
+                <p class="dib f7 f6-ns pa1 pl0 pl0-ns f5-ns ml2 lh-copy mv0" style="word-break: break-all;">
+                  ${raw(anchorme(message))}
+                </p>
+              </div>
             </div>
           </div>
-          <div class="flex w-10 items-end pa1 ph3-ns ml2 ml5-ns justify-end">
+          ${extra}
+          <div class="flex items-end pa1 ph3-ns ml2 ml5-ns justify-end">
             <div data-balloon="${date}" data-balloon-pos="left">
               <span class="f5-ns f6-ns f7 lh-copy">⌚️</span>
             </div>
           </div>
         </div>
-        ${extra}
       </div>
     `
   }

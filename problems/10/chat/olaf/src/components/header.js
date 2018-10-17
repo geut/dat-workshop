@@ -30,7 +30,7 @@ module.exports = function header (state, emit) {
     emit(TOGGLE_THEME)
   }
 
-  return html`<div class="logo w-100 flex justify-around">
+  return html`<div class="logo w-100 flex justify-around" style="min-height: 60px;">
     <div class="w-50">
       <h1 class="f2 mt0 mb0">olaf 🐱</h1>
     </div>
