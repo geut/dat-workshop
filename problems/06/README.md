@@ -46,7 +46,7 @@ Pero debemos tener en cuenta algunas cosas mas:
 ## Test
 
 ```
-$ npm test 06
+$ npm test ./06
 ```
 
 ## Tips

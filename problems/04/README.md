@@ -101,7 +101,7 @@ cada mensaje en un array.
 ## Test
 
 ```
-$ npm test 04
+$ npm test ./04
 ```
 
 ## Tips

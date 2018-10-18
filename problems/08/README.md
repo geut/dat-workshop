@@ -30,7 +30,7 @@ Internamente, hyperdb **escribe** en el feed, como si fuera un mensaje mas (aunq
 ## Test
 
 ```
-$ npm test 08
+$ npm test ./08
 ```
 
 ## Tips

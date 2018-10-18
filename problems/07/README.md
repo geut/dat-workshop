@@ -21,7 +21,7 @@ stream entero cada vez que hay un cambio.
 ## Test
 
 ```
-$ npm test 07
+$ npm test ./07
 ```
 
 ## Tips

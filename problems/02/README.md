@@ -21,7 +21,7 @@ const feed = hypercore('./my-first-dataset', {valueEncoding: 'utf-8'})
 ## Test
 
 ```
-$ npm test 02
+$ npm test ./02
 ```
 
 ## Tips
