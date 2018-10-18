@@ -4,7 +4,8 @@
       "@babel/env",
       {
         "targets": {
-          "browsers": "last 10 chrome versions"
+          chrome: "58",
+          node: "6"
         }
       }
     ]
