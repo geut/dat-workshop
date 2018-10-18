@@ -69,7 +69,7 @@ Que pasaría si intentas acceder al `secretKey`? :speak_no_evil:
 ## Test
 
 ```
-$ npm test 03
+$ npm test ./03
 ```
 
 ## Tips

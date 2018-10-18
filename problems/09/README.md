@@ -56,7 +56,7 @@ Hay [dos parámetros](/geut-discovery-swarm-webrtc#const-sw-swarmopts) important
 ## Test
 
 ```
-$ npm test 09
+$ npm test ./09
 ```
 
 ## Tips

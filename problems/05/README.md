@@ -55,7 +55,7 @@ Entonces, comencemos el desarrollo de nuestra API, aka: **Saga** :heart_eyes_cat
 ## Test
 
 ```
-$ npm test 05
+$ npm test ./05
 ```
 
 ## Tips
