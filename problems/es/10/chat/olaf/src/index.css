@@ -1,0 +1,25 @@
+@import 'tachyons';
+@import 'balloon-css/balloon.min.css';
+
+html, body {
+  height: 100%;
+}
+
+.break-word {
+  overflow-wrap: break-word;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(17, 17, 17, 0.51);
+}
+
+.icon-button {
+  width: 40px;
+  padding: 10px;
+  height: 40px;
+}

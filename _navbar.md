@@ -1,0 +1,3 @@
+- Translations
+  - [:uk: English](/en/)
+  - [:es: Spanish](/es/)
