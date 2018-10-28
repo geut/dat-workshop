@@ -1,52 +1,41 @@
-# 4 - Todo se trata de streams
+# 4 - It's all about streams 
 
-## Introducción a streams
+## Quick introduction to streams
 
-Si has programado en Node.js es muy probable que hayas usado [streams](https://nodejs.org/api/stream.html)
-sin siquiera saberlo.
+Well, if you have written even a small node.js app, chances are, that you have used [streams](https://nodejs.org/api/stream.html) somewhere in the road, being aware of it or not.
 
-De hecho, son tan importantes que forman parte del core de Node. Cada _request_ o _response_ de tu
-servidor, cada `console.log` u operación sobre el filesystem involucra algún tipo de stream. :boom:
+In fact, `streams` are part of the node.js core. Every _request_ or _response_ from a server, every `console.log` or filesystem operation are using streams in one way or another. :boom:
 
-Un stream es una interfaz que representa una secuencia de datos `a---b---c` en el tiempo y en donde
-la información fluye desde una _fuente_ hacia un _destino_.
+We can picture a stream as an interface for a data _flow_ `a---b---c` which can change over _time_ and where data flows from a _source_ to a _destination_. 
 
-Los streams nos permiten por ejemplo leer un archivo por partes (chunks) a través de un `ReadableStream`,
-aplicarle algún tipo de transformación por medio de un `TransformStream` y escribir cada chunk modificado
-en un destino particular con un `WritableStream`.
+For example, using `streams` we can read a file by _chunks_ making use of a `ReadableStream`, apply some kind of _transformation_ with a `TransformStream` and finally, write every _chunk_ of data into a specific destination using a `WritableStream`. 
 
-Los streams pueden operar en un solo sentido como un ReadableStream que solo lee de una fuente
-y envía sus datos al siguiente stream:
+Some `streams` operate in a single way, like a `ReadableStream` which only _reads_ from a _source_ and pass the data to the next stream:
 
 ```
 ReadableStream ---> ( DuplexStream | TransformStream ) ---> WriteableStream
 ```
 
-Pero también existen los `DuplexStream` que permiten operaciones tanto de lectura como escritura.
-Un ejemplo seria un [Socket](https://nodejs.org/api/net.html#net_new_net_socket_options)
+Other type of `streams` can operate in bi-directional manner, ie, can perform _reads_ and _writs_. This `streams` are known as `DuplexStream`. One example is the well known [Socket](https://nodejs.org/api/net.html#net_new_net_socket_options).
 
-!> Lo importante es tener en cuenta que dichas interfaces existen para definir una única forma de operar
-sobre datos de forma eficiente y escalable. No importa si los datos se leen o escriben desde el disco o de una
-conexión de red, **los streams hablan un solo lenguaje** y eso nos permite combinarlos como necesitemos.
+!> It is important to have in mind that this kind of _interfaces_ exists only to define a common, scalabel and efficient way to communicate data. `streams` help us to abstract the source and destination. It does not matter if we are reading or writing from/to a file or if it is the net. `streams` **speaks a unique language** and this allows us to **combine them** the way we needed.
 
-:link: No es parte del workshop avanzar demasiado en este tema pero si querés aprender mas te recomendamos el
+:link: If you want to keep on learning about streams, we recommend you the 
 [stream-handbook](https://github.com/substack/stream-handbook).
 
-## Streams en Hypercore
+## Streams in Hypercore
 
-Internamente `hypercore` utiliza streams para cumplir sus objetivos.
+On the inside, `hypercore` uses streams to work.
 
-### Leyendo nuestros logs
+### Reading the logs 
 
-Podemos leer los datos de nuestro `feed` utilizando `feed.createReadStream` y mostrar los datos en pantalla:
+We can read our `feed` using `feed.createReadStream` and display that info on the console using `process.stdout`:
 
 ```javascript
 feed.createReadStream().pipe(process.stdout)
 ```
 
-Como veras, `console.log` es un `WritableStream` en donde el destino es escribir en pantalla.
-
-Utilizamos el método `pipe` para conectar y definir el flujo de datos de nuestros streams.
+As you can see, we are using the `pipe` method to _connect_ and define our data flow in our streams.
 
 ```javascript
 // a --> b --> c
@@ -54,49 +43,42 @@ Utilizamos el método `pipe` para conectar y definir el flujo de datos de nuestr
 a.pipe(b).pipe(c)
 ```
 
-### Replicar
+### Replication 
 
-Supongamos que tenemos un feed local que utiliza la key pública de un feed remoto. En algún momento vamos
-a querer leer sus datos, tenemos su key por lo que podemos desencriptarlos.
+Ok, let's suppose we have local feed and a remote public key. At some point we want to read data from this other feed, since we have it's PK, we can decrypt them.
 
-Pero antes de desencriptar los datos deberíamos poder obtenerlos, traerlos a nuestro feed local y unificarlos
-con los datos que ya tenemos. A este proceso lo llamamos `replicacion`.
+But before decrypt them, we need to fetch and merge them into our local feed. This process is called `replication`.
 
 ![replicant scene from blade runner](https://media.giphy.com/media/xtpNfxNz7rTSo/giphy.gif)
 
-Queremos _replicar_ los datos del feed remoto en nuestro feed local.
+We want to _replicate_ remote feeds data into our local feed.
 
-Para poder lograrlo, volvemos a utilizar streams. Hypercore API ofrece un `feed.replicate()` que retorna un
-_replication stream_ el cual lee la data de un feed remoto, la incorpora a su feed local y finalmente pasa el resultado
-al siguiente stream, es decir se comporta como un `DuplexStream`.
+In order to do this, we are going to use streams. Hypercore API has a `feed.replicate()` method which returns a _replication stream_ that reads the remote feed, sync it with the local feed and finally pass the result to the next stream. In other words, it behaves like a `DuplexStream`.
 
 ![replicate](images/replicate.png)
 
-### Sincronizar
+### Sync 
 
-Con `replicate()` podemos replicar los datos de un _feed remoto_ en nuestro _feed local_ pero tambien debemos
-pensar que el feed remoto puede estar _desactualizado_.
+With `replicate()` we can combine the _remote feed_ with our _local feed_ but we need to be aware of out of date data in our _remote feed_.
 
-!> Todos los peers deberían tener, eventualmente, la última versión de los datos.
+!> Eventually, all the peers should have the same (up to date) data.
 
-Si tomamos en cuenta que la conexión entre dos peers es **bidireccional** podríamos hacer lo siguiente:
+If we see the conection between two peers as a bi-directional connection, we can do the following:
 ```javascript
 //                (1)                      (2)
 remoteFeed.pipe(localFeed.replicate()).pipe(remoteFeed)
 ```
-1. Primero recibimos los datos de un feed remoto y los replicamos en nuestro feed local.
-2. Una vez que tenemos nuestro feed actualizado, enviamos los datos nuevamente al feed remoto
-para que se actualice en caso de tener data inconsistente.
-3. Al final, ambos feed tienen la misma versión de los datos.
+1. First, data is received from the remote feed and replicated into our local feed.
+2. Once our feed is updated, data is sent to the remote feed. This is made to ensure consistency.
+3. Finally, both feeds have the same data.
 
-## Ejercicio
+## Exercise 
 
-Vamos a simular leer mensajes que otro peer escribio. Para eso:
+We are going to simulate reading messages from another peer. To do that we need to:
 
-1. Vamos a sincronizar el feed local (con el del peer).
-2. Una vez finalizada la sincronización, leeremos los datos del feed y cargaremos
-cada mensaje en un array.
-3. Una vez finalizada la lectura del feed, retornar el listado de mensajes.
+1. Sync local feed with remote one.
+2. Once sync is done, read data from our local feed and push each message into an array.
+3. When we finish reading our feed, we need to return the messages list.
 
 ## Test
 
@@ -108,34 +90,25 @@ $ npm test ./04
 
 ### 1 - Pump
 
-Por implementación de Node, si tenemos streams conectados por `.pipe` y uno de ellos
-se destruye, el resto sigue funcionando.
+By design, if we have streams connected by `.pipe` and one of them fails, the rest keep working.
 
-Nosotros queremos que si algún stream se destruye (intencionalmente o por error) que todos
-los streams conectados también lo hagan. Por eso vamos a utilizar el modulo [pump](/pump)
-para remplazar a pipe.
+This can lead to multiple error conditions. We want to destroy all the streams if one fails. That's why we are going to use 
+[pump](/pump) instead of `.pipe`.
 
-Pump nos permite _pipear_ nuestros streams y asegurarnos que en caso de que uno se destruya, todos lo hagan. :cool:
-
-> Como feature extra, el último argumento de pump puede ser una función que se ejecuta
-cuando finalizan todos los streams.
+!> As an extra feature, with `pump` we can pass a function to the last argument. This function will be executed when all the streams finish.
 
 ```javascript
 a.pipe(b).pipe(c)
 
-// to
+// becomes
 
 pump(a, b, c, err => {
   console.log('all streams have finished')
 })
 ```
 
-### 2 - Lectura/Escritura de datos
+### 2 - Reading/Writing data 
 
-Un WritableStream nos permite iterar sobre los _chunks_ que fluyen en los streams y
-escribirlos en donde queramos: disco, network, screen o inclusive en nuestra memoria.
+A `WritableStream` can iterate through all the _chunks_ of data flowing in our streams and we can write them wherever we want, eg: filesystem, network, memory, etc. 
 
-Sabiendo esto, podemos definir un WritableStream que itere sobre los _chunks_ de forma similar a un `[].forEach`
-y guardarlos en la estructura (un `Map` por ejemplo) que necesitemos.
-
-Les recomendamos que investiguen `forEachChunk`, una función que armamos para ayudarlos a cumplir su objetivo.
+We have made a special function: `forEachChunk`, which can be seen as a little helper to write data (and of course, it is a `WritableStream`)
