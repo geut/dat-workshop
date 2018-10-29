@@ -1,31 +1,39 @@
-# 8 - Autorizando a otros peers :horse: :hamster: :rabbit:
+# 8 - Otherizing other peers :horse: :hamster: :rabbit:
 
-Hasta ahora todo lo que hemos visto ha involucrado pruebas locales con nuestra db pero no hemos interactuado mucho con el resto de nuestros compas.
+Until now, all that we've seen has involved local tests with our database but
+we have not interacted much with the rest of our computers.
 
-Es tiempo de cambiar eso.
+It's time to change that.
 
 ## Back to hyperdb & hypercore
 
-Recuerdan que estamos usando hypercore y encima de el, hyperdb. Hagamos un breve repaso juntos, hasta ahora sabemos que:
+Remember that we are using hypercore and on top of that, hyperdb. Let's make
+a quick pass over both, until know we know that
 
-- Dat es _singlewriter_, por ahora.
-- `hypercore` es el :heartpulse: de Dat.
-- `hypercore` nos permite crear un _feed_ (estructura de datos) donde podemos escribir/leer y que podemos compartir.
-- Cada _feed_ nos da una clave pública que nos sirve para identificarnos.
-- Un _feed_ puede ser visto como un _append-only log_.
-- `hyperdb` es una db que opera sobre un **conjunto** de feeds (hypercores).
-- `hyperdb` habilita a Dat a soportar _multiwriters_
+- Dat is _singlewriter_, for now.
+- `hypercore` is the :heartpulse: of Dat.
+- `hypercore` allows us to create a _feed_ (data structure) where we can write/read and share. 
+- Each _feed_ gives us a public key that can serve to identify it (and us). 
+- A _feed_ can be seen like an _append-only log_.
+- `hyperdb` is a db that operates over a **group** of feeds (hypercores).
+- `hyperdb` allows DAt to support _multiwriter_
 
-## Cómo permitimos a otros peers qué escriban en nuestro feed?
+## How can we let other peers write on our feed? 
 
-Funciona de la siguiente manera: una operación de escritura en el feed del autor original (el creador de nuestro chat, en nuestro caso), indica que determinado peer puede escribir. La forma de identificar al peer es mediante su clave pública (`PK`), es decir, este peer :horse: debe pasarme su `PK` de alguna forma.
+It works in the following way: an writing operation in the original author's
+feed (the creator of our chat, in our case), indicates the peer that wants to
+write. The form to identify the peer is through their public key (`PK`), to
+say, this peer :horse: could pass their `PK` of their way. 
 
-Internamente, hyperdb **escribe** en el feed, como si fuera un mensaje mas (aunque es un mensaje especial), que determinado peer :horse: puede escribir.
+Internally, hyperdb **writes** in the feed, as if it was another message (but
+a special message) which determines a peer :horse: can write.
 
-## Ejercicio
+## Exercise
 
-1. `Saga` debe soportar un nuevo metodo (API) que le permitira autorizar a un peer. Este método `_authorize` recibirá como parámetro una `PK`.
-2. Este nuevo método retorna una promesa que cuando resuelve exitosamente entrega un string: `AUTHORIZED`, y cuando hace el reject, devuelve el error.
+1. `Saga` should support a new method (API) which permits it to authorize a peer. This method `_authorize` receives a parameter `PK`. 
+2. This new method returns a promise that when it resolves successfully,
+   delives a string `AUTHORIZED`, and when it rejects, it passes the error
+through.
 
 ## Test
 
