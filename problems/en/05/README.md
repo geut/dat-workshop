@@ -1,56 +1,49 @@
-# 5 - De un log distribuido a una db distribuida
+# 5 - From a distributed log to a distributed db 
 
-Felicitaciones :tada::fireworks:!!
+Congratulations :tada::fireworks:!!
 
-Si llegaste hasta aquí significa que ya sos una hypercore padawan. Es tiempo de ampliar tu
-conocimiento peer-to-peer y convertirte en una gran Jedi.
+If you are here it means you have become a hypercore padawan. It's time to increase your P2P knowledge and follow the road to be a great Jedi.
 
-Vimos que hypercore nos ofrece un log distribuido pero existen situaciones en donde eso
-no nos alcanza, por suerte, nada nos limita a crear estructuras mucho mas complejas
-arriba de hypercore. Una de ellas es nuestra :star: del workshop: [hyperdb](/hyperdb)
+We just saw that hypercore gives us a distributed log that we can work with. :cool:
+But there are situations when that is not enough. Luckily to us, there are more libs written on top of hypercore and one of those is here to help, meet [hyperdb](/hyperdb) :star:
 
 ## Hyperdb
 
-Hyperdb nos ofrece una base de datos key-value distribuida sobre un conjunto
-de feeds de hypercore.
+Hyperdb offers a key-value distributed over a set of hypercores database. :cool:
 
-Una de la features mas importantes es, que agrega la posibilidad de tener `multiple-writters` lo cual
-llevaría a Dat al siguiente nivel, en donde múltiples usuarios **previamente autorizados** podrían
-modificar el contenido de un recurso Dat. **Ya no existiría un solo owner**.
+One of the most important features is that it give us the ability to have `multiple-writers`. Which takes Dat to the next level, where multiple users, previously authorized now could be able to modify a Dat resource. Ie, **we have multiple owners**.
 
-## Sobre qué vamos a construir
+## A word about what we are building 
 
-En este workshop estamos aprendiendo cómo usar Dat para escrbir una aplicación web P2P. Nuestro objetivo será construir juntos un chat P2P. El codename del chat será: _Olaf_ :smiley_cat:.
+On this workshop we are learning how to use Dat to create a _P2P web app_. More specifically, our goal here is to build together a P2P chat and the codename will be _Olaf_ :smiley_cat:.
 
-Para construir nuestro chat vamos a usar lo que venimos aprendiendo. En este modulo vamos a introducir una parte fundamental que iremos desarrollando. Les presentamos a _saga_ :heart_eyes_cat:
+So, to build our chat app we are going to use all the things that we have learned. In this module, we are about to introduce a fundamental part, the core of our chat, and it has a codename too: _Saga_ :heart_eyes_cat:.
 
 ## Saga
 
 ![saga](images/saga.jpg)
 
-Hyperdb es lo que necesitamos para poder avanzar en nuestro chat peer-to-peer.
+We are going to start using hyperdb to build _saga_.
 
-Vamos a definir una API que permita a múltiples usuarios escribir sobre un hyperdb distribuido.
+Ok, so first let's define a simple API that permits multiple users to write messages over a distributed hyperdb.
 
-En este caso enfoquemonos en los requerimientos que tiene un chat para
-considerarse como tal:
+Let's focus on a list of possible requirements our chat can have:
 
-1. Podemos escribir mensajes en el chat.
-1. Podemos leer los mensajes en _real-time_.
-1. Podemos conectar y desconectar usuarios al canal (_room_).
+1. We should be able to write messages.
+1. We should be able to read messages in _real-time_.
+1. We should be able to detect when an user connects and disconnects from a channel (_room_).
 
-Entonces, comencemos el desarrollo de nuestra API, aka: **Saga** :heart_eyes_cat:
+Cool, let's start writing this new API, **saga**. :heart_eyes_cat:
 
-## Ejercicio
+## Exercise 
 
-1. En la clase `Saga` agregar un constructor que reciba un `storage`, una `key` y un `username`.
-2. Con el `storage` y la `key`, crear una instancia de hyperdb con un valueEncoding **json**.
-3. Una instancia de Saga debe permitirnos acceder a:
-  * la instancia de hyperdb, bajo la prop: `db`
-  * el username, bajo la prop: `username`
-  * un [Map](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Map)
-  de usuarios (inicialmente vació): `users`
-  * Un `Map` de mensajes (inicialmente vació): `messages`
+1. Add a constructor to the class `Saga` that receives a `storage`, a `key` and a `username`.
+2. With the `storage` and the `key`, create an instance of hyperdb using **json** as the valueEncoding.
+3. `Saga` instance should allows us to access to:
+  * the instance of hyperdb under the prop: `db`
+  * the username, under the prop: `username`
+  * a users [Map](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Map), initially empty, under the prop: `users`.
+  * a messages `Map` (initially empty): `messages`.
 
 ## Test
 
@@ -60,13 +53,13 @@ $ npm test ./05
 
 ## Tips
 
-1. Vas a encontrar que hyperdb posee una API muy similar a hypercore. :wink:
-2. Sobre `Map`, partes importantes:
-  - un map puede contener objetos como claves. :cool:
+1. `hyperdb` offers an API similar to hypercore. :wink:
+2. About `Map` usage: 
+  - a map can have objects for keys :cool:
   - constructor: `new Map([iterable])`
-  - métodos:
-    - `size()`, para obtener el tamaño.
-    - `set(clave, valor)`, para agregar un _clave_ nueva con _valor_.
-    - `has(clave)`, para saber si nuestro map contiene determinada clave.
-    - `keys()`, para obtener todas las claves del map.
-  - Hint: es :cool: usar `for...of` para iterar sobre los elementos del map.
+  - important methods:
+    - `size()`, for getting the size.
+    - `set(key, value)`, for add a new _key_ with _value_.
+    - `has(key)`, to know if key exists on map.
+    - `keys()`, to get all the keys (array) of the map.
+  - Hint: it is :cool: to use `for...of` to iterate over the map.
