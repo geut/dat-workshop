@@ -21,26 +21,31 @@ alternative stack.
 We're going to add to `Olaf` what we have been building in `Saga`, our own API
 over hyperdb that allows us to replicate feeds and read/write messages :cool:
 
-## Un vistazo rápido sobre Choo :steam_locomotive:
+## A quick glance over Choo :steam_locomotive:
 
-Choo es un framework minimalista para construir aplicaciones web. Tiene todo lo necesario y nada mas.
+Choo is a minimalist framework to construct web applications. It has everything
+you need and nothing more.
 
-Algunos conceptos importantes en el mundo de Choo:
-- Tenemos vistas y componentes. Usualmente una vista levanta varios componentes. Una vista seria un [_statefull component_](/choo#components).
-- Los componentes son similares a las _stateless functions_ de React.
-- En el core de choo hay un sistema de eventos. Por ejemplo, un renderizado se dispara a emitiendo el evento `render`.
-- Choo cuenta con un router que mapea regex a vistas.
-- Hay algunos [eventos built-in](/choo#events) que que podemos usar cuando creamos apps, pero tambien esta todo bien con agregar nuestros [propios eventos](/choo#stateevents) de acuerdo a la lógica de nuestra app.
-- Finalmente, el [estado](/choo#state) es un objeto compartido que puede ser mutado. Un re-renderizar no esta atado a un cambio de estado directamente. Aunque suele ser lo usual, pero no olvidemos que tenemos que emitir el render.
+Some important concepts in the Choo world:
+- We have views and components. Usually a view uses various components. A view
+  would be a [_stateful component_](/choo#components). 
+- Components are similar to _stateless functions_ in React.
+- In choo core, there is an event system. For example, a rendering dispatches the `render` event. 
+- Choo comes with a router that maps regex to views.
+- There are some [built-in events](/choo#events) that we can use when we create apps, but also it's ok to use our [own events](/choo#stateevents) that conforms to the logic of our own app. 
+- Finally, the [state](/choo#state) is a shared object that can be mutated.
+  A re-renderizer isn't tied to a change in the state directly. Even though
+usually it's usual, but don't forget we have to emit render.
 
-## Ejercicio
+## Exercise
 
-1. Primero vamos a familiarizarnos con `Olaf` :cat2:
-  - Revisemos las vistas (`main.js`).
-  - Luego los componentes.
-  - Y finalmente los `stores`. Aquí encontraremos el binding entre `Saga` y `Olaf`. Mas alla de esto, veamos como esta distribuida la lógica de eventos, cuales se disparan y tratemos de entender en que momento deberian ocurrir. En qué momento se conectan los _listeners_ de nuestra app?
-1. Ahora pasemos a `chat/olaf/lib` donde vamos a encontrar un _placeholder_ para `Saga`. Copiemos el código de la clase de `Saga` del ejercicio anterior. Esto sumariza el trabajo que venimos haciendo.
-1. Volvamos al store principal, `stores/chat.js`. En la función `initRoom` tenemos que terminar el binding entre `Saga` y `Olaf`.
+1. First let's familiarize ourselves with `Olaf` :cat2:
+  - Review the views (`main.js`).
+  - Then the components. 
+  - And then the `stores`. Here we find the connection between `Saga` and `Olaf`. We can also see how the event logic is distributed and which ones will be called. Try to understand when they will occur. When do the _listeners_ connect to the app?
+1. Now let's go over `chat/olaf/lib` where we will find a _placeholder_ for
+   `Saga.` Let's copy the code of the `Saga` class from the last exercise. 
+1. Return to the store, `stores/chat.js`. In the `initRoom` function we have to finish the binding between `Saga` and `Olaf`.
 
 ## Test
 
@@ -48,5 +53,6 @@ Algunos conceptos importantes en el mundo de Choo:
 
 ## Tips
 
-En este ejercicio estamos conectando todo lo que veniamos viendo sobre Dat con una aplicación nueva. Entendemos que hay varios cosas nuevas, por eso no dudes en preguntarnos :smile_cat:
-
+In this exercise we are connecting all that we have learned about dat in 
+a new application. We understand that there are many new things, so don't
+hesitate to ask questions :smile_cat: 
