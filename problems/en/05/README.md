@@ -5,17 +5,17 @@ Congratulations :tada::fireworks:!!
 If you are here it means you have become a hypercore padawan. It's time to increase your P2P knowledge and follow the road to be a great Jedi.
 
 We just saw that hypercore gives us a distributed log that we can work with. :cool:
-But there are situations when that is not enough. Luckily to us, there are more libs written on top of hypercore and one of those is here to help, meet [hyperdb](/hyperdb) :star:
+But there are situations when that is not enough. Luckily for us, there are more libs written on top of hypercore and one of those is here to help, meet [hyperdb](/hyperdb) :star:
 
 ## Hyperdb
 
 Hyperdb offers a key-value distributed over a set of hypercores database. :cool:
 
-One of the most important features is that it give us the ability to have `multiple-writers`. Which takes Dat to the next level, where multiple users, previously authorized now could be able to modify a Dat resource. Ie, **we have multiple owners**.
+One of the most important features is that it give us the ability to have `multiple-writers`. This takes Dat to the next level, where multiple users, once authorized, are able to modify a Dat resource (i.e, **we have multiple owners**.)
 
 ## A word about what we are building 
 
-On this workshop we are learning how to use Dat to create a _P2P web app_. More specifically, our goal here is to build together a P2P chat and the codename will be _Olaf_ :smiley_cat:.
+In this workshop we are learning how to use Dat to create a _P2P web app_. More specifically, our goal here is to build a P2P chat app together and the codename will be _Olaf_ :smiley_cat:.
 
 So, to build our chat app we are going to use all the things that we have learned. In this module, we are about to introduce a fundamental part, the core of our chat, and it has a codename too: _Saga_ :heart_eyes_cat:.
 
@@ -39,7 +39,7 @@ Cool, let's start writing this new API, **saga**. :heart_eyes_cat:
 
 1. Add a constructor to the class `Saga` that receives a `storage`, a `key` and a `username`.
 2. With the `storage` and the `key`, create an instance of hyperdb using **json** as the valueEncoding.
-3. `Saga` instance should allows us to access to:
+3. `Saga` instance should allow us to access:
   * the instance of hyperdb under the prop: `db`
   * the username, under the prop: `username`
   * a users [Map](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Map), initially empty, under the prop: `users`.
