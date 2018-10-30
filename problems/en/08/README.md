@@ -43,7 +43,7 @@ $ npm test ./08
 
 ## Tips
 
-Usaremos dos métodos de la API de hyperdb:
+We will use two methods from hyperdb API:
 
 - [`authorize`](/hyperdb#dbauthorizekey-callback), is used to authorize another peer.
 - [`authorized`](/hyperdb#dbauthorizedkey-callback), is used to check if some key was already authorized.
