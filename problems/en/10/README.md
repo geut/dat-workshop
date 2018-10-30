@@ -1,14 +1,16 @@
-# 10 - Conociendo a Olaf :smiley_cat:
+# 10 - Getting to know Olaf :smiley_cat:
 
-:checkered_flag: Estamos en la recta final de nuestra aplicación. Vamos a conectar todo lo que vimos con una interfaz de usuario que esperemos sea de su agrado :relaxed:.
+:checkered_flag: We are in the final round of our app. We are going to connect all that we've seen with a user interface that we hope people like :relaxed:.
 
 ![el gato olaf](./images/the-olaf.jpg)
 
-**Con todos nuestro nuevos conocimientos vamos a crear un chat P2P.**
+**With all our new knowledge we are going to create a P2P chat.**
 
-> Recuerden que la idea del workshop es conocer mas sobre Dat y todas las partes que lo componen. Luego podemos usar ese conocimiento para crear cualquier tipo de aplicación. Sin embargo pueden haber notado que las arquitecturas de estas apps P2P son un poco diferentes a las web apps tradicionales con las que podemos venir trabajando. De cualquier manera, tu imaginación es el limite.
+> Remember that the workshop idea is to know more about Dat and all of the parts that make it up. Later, we can use that knowledge to create whatever type of application. Nevertheless, note that the architectures of these P2P apps are a little different that traditional webapps with which we are acustomed to working with. Anyway, your imagination is the limit.
 
-Pero para ponernos un poco mas prágmaticos, vamos a partir de una app que usaremos como cascarón para nuestro workshop. Esta app se llama `Olaf` y esta construida sobre un stack alternativo:
+But to a bit pragmatic, we are going to start with an app that we will use like
+a shell for our workshop. This app is called `Olaf` and it's built on an
+alternative stack.
 
 - [choo](/choo)
 - [tachyons](https://tachyons.io/)
@@ -16,7 +18,8 @@ Pero para ponernos un poco mas prágmaticos, vamos a partir de una app que usare
 - babel7
 - webrtc
 
-A `Olaf` le agregaremos lo que venimos construyendo en `Saga`, nuestra propia API sobre hyperdb que nos permite replicar feeds y leer/escribir mensajes. :cool:
+We're going to add to `Olaf` what we have been building in `Saga`, our own API
+over hyperdb that allows us to replicate feeds and read/write messages :cool:
 
 ## Un vistazo rápido sobre Choo :steam_locomotive:
 
