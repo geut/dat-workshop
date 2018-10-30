@@ -31,7 +31,7 @@ $ npm test ./07
 
 ## Tips
 
-1. To read the hyperdb we recommend you use `createHistoryStream` and iterate over the messages in **eeverse** order.
+1. To read the hyperdb we recommend you use `createHistoryStream` and iterate over the messages in **reverse** order.
 1. Now `Saga` extends EventEmitter, that means that it has all the
    functionality to emit events.
 1. When we want to finalize a stream we can call `destroy()`. If the stream
