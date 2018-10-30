@@ -16,16 +16,16 @@ Some `streams` operate in a single way, like a `ReadableStream` which only _read
 ReadableStream ---> ( DuplexStream | TransformStream ) ---> WriteableStream
 ```
 
-Other type of `streams` can operate in bi-directional manner, ie, can perform _reads_ and _writs_. This `streams` are known as `DuplexStream`. One example is the well known [Socket](https://nodejs.org/api/net.html#net_new_net_socket_options).
+Other types of `streams` can operate in bi-directional manner, ie, can perform _reads_ and _writes_. This type of `stream` is known as a `DuplexStream`. One example is the well known [Socket](https://nodejs.org/api/net.html#net_new_net_socket_options).
 
-!> It is important to have in mind that this kind of _interfaces_ exists only to define a common, scalabel and efficient way to communicate data. `streams` help us to abstract the source and destination. It does not matter if we are reading or writing from/to a file or if it is the net. `streams` **speaks a unique language** and this allows us to **combine them** the way we needed.
+!> It is important to keep in mind that this kind of _interface_ exists only to define a common, scalable, and efficient way to communicate data. `streams` help us to abstract the source and destination. It does not matter if we are reading or writing from/to a file or the net. `streams` **speak a unique language** and this allows us to **combine them** the way we need.
 
-:link: If you want to keep on learning about streams, we recommend you the 
+:link: If you want to keep on learning about streams, we recommend you read the 
 [stream-handbook](https://github.com/substack/stream-handbook).
 
 ## Streams in Hypercore
 
-On the inside, `hypercore` uses streams to work.
+Inside, `hypercore` uses streams to work.
 
 ### Reading the logs 
 
@@ -51,15 +51,15 @@ But before decrypt them, we need to fetch and merge them into our local feed. Th
 
 ![replicant scene from blade runner](https://media.giphy.com/media/xtpNfxNz7rTSo/giphy.gif)
 
-We want to _replicate_ remote feeds data into our local feed.
+We want to _replicate_ remote feed data into our local feed.
 
-In order to do this, we are going to use streams. Hypercore API has a `feed.replicate()` method which returns a _replication stream_ that reads the remote feed, sync it with the local feed and finally pass the result to the next stream. In other words, it behaves like a `DuplexStream`.
+In order to do this, we are going to use streams. Hypercore API has a `feed.replicate()` method which returns a _replication stream_ that reads the remote feed, syncs it with the local feed and finally passes the result to the next stream. In other words, it behaves like a `DuplexStream`.
 
 ![replicate](images/replicate.png)
 
 ### Sync 
 
-With `replicate()` we can combine the _remote feed_ with our _local feed_ but we need to be aware of out of date data in our _remote feed_.
+With `replicate()` we can combine the _remote feed_ with our _local feed_ but we need to be aware of our of data in our _remote feed_.
 
 !> Eventually, all the peers should have the same (up to date) data.
 
@@ -76,7 +76,7 @@ remoteFeed.pipe(localFeed.replicate()).pipe(remoteFeed)
 
 We are going to simulate reading messages from another peer. To do that we need to:
 
-1. Sync local feed with remote one.
+1. Sync the local feed with remote one.
 2. Once sync is done, read data from our local feed and push each message into an array.
 3. When we finish reading our feed, we need to return the messages list.
 
@@ -109,6 +109,6 @@ pump(a, b, c, err => {
 
 ### 2 - Reading/Writing data 
 
-A `WritableStream` can iterate through all the _chunks_ of data flowing in our streams and we can write them wherever we want, eg: filesystem, network, memory, etc. 
+A `WritableStream` iterates through all the _chunks_ of data flowing in our streams and we can write them wherever we want, eg: filesystem, network, memory, etc. 
 
 We have made a special function: `forEachChunk`, which can be seen as a little helper to write data (and of course, it is a `WritableStream`)

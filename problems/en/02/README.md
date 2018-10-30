@@ -4,7 +4,7 @@
 
 It works as an [append-only log](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying) providing all the mechanisms necessary to work with and share big volumes of data in a distributed and secure manner.
 
-Let's take a first look on how an `hypercore` looks like. It's just a function we can call and will return a [feed](/terms).
+First, let's take a look at what `hypercore` looks like. It's just a function we can call and will return a [feed](/terms).
 
 ```javascript
 const hypercore = require('hypercore')
@@ -25,6 +25,6 @@ $ npm test ./02
 
 ## Tips
 
-1. `hypercore` requires as a first parameter a function defining the `storage`. This function must follow the [random-access-storage](/random-access-storage) interface.
-1. If we pass a _path_ instead of a `storage`, `hypercore` will use [random-access-file](/random-access-file) as a default storage.
+1. `hypercore` takes as a first parameter a function that defines the `storage`. This function must follow the [random-access-storage](/random-access-storage) interface.
+1. If we give hypercore a _filepath_ instead of a `storage` function, `hypercore` will use [random-access-file](/random-access-file) as a default storage.
 1. If you take a look into the `hypercore` options you will see that we can specify the type of [codec](/codecs) to use for parsing the data.
