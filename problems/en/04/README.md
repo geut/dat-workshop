@@ -95,7 +95,7 @@ By design, if we have streams connected by `.pipe` and one of them fails, the re
 This can lead to multiple error conditions. We want to destroy all the streams if one fails. That's why we are going to use 
 [pump](/pump) instead of `.pipe`.
 
-!> As an extra feature, with `pump` we can pass a function to the last argument. This function will be executed when all the streams finish.
+!> As an extra feature, with `pump` we can pass a function as the last argument. This function will be executed when all the streams finish.
 
 ```javascript
 a.pipe(b).pipe(c)
