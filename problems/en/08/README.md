@@ -1,4 +1,4 @@
-# 8 - Otherizing other peers :horse: :hamster: :rabbit:
+# 8 - Authorizing other peers :horse: :hamster: :rabbit:
 
 Until now, all that we've seen has involved local tests with our database but
 we have not interacted much with the rest of our computers.
