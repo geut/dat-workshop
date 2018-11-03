@@ -1,5 +1,3 @@
-[comment]: <> (This readme should be the same as problems/en/README.md, it is here only as a default starting point)
-
 # dat-workshop
 > Welcome to `building web apps using Dat` workshop
 
