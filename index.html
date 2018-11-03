@@ -18,9 +18,18 @@
       loadNavbar: true,
       subMaxLevel: 3,
       fallbackLanguages: ['en', 'es'],
+      nameLink: {
+        '/es/': '#/es/',
+        '/': '/'
+      },
       alias: {
-        '/es/(.*)': '/problems/es/$1',
-        '/en/(.*)': '/problems/en/$1',
+        '/(.*)/_navbar.md': '/_navbar.md',
+        '/es/problems/04/assets/replicate.png': '/assets/replicate.png',
+
+        // es
+        '/es/problems/(\\d*)/': '/problems/$1/README.es.md',
+        '/es/(problems\/\\d*)?(.*)': '/i18n/es/$2',
+
         '/dat': 'https://raw.githubusercontent.com/datproject/dat/master/README.md',
         '/hypercore': 'https://raw.githubusercontent.com/mafintosh/hypercore/master/README.md',
         '/random-access-storage': 'https://raw.githubusercontent.com/random-access-storage/random-access-storage/master/README.md',
