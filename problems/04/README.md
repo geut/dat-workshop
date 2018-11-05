@@ -55,7 +55,7 @@ We want to _replicate_ remote feed data into our local feed.
 
 In order to do this, we are going to use streams. Hypercore API has a `feed.replicate()` method which returns a _replication stream_ that reads the remote feed, syncs it with the local feed and finally passes the result to the next stream. In other words, it behaves like a `DuplexStream`.
 
-![replicate](/../../assets/replicate.png)
+![replicate](/assets/replicate.png)
 
 ### Sync 
 

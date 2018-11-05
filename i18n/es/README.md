@@ -3,7 +3,7 @@
 
 Sponsored by
 
-![geut logo](/../assets/geut.png)
+![geut logo](/assets/geut.png)
 
 _Este workshop fue originalmente creado para NodeConf Ar 2018._
 

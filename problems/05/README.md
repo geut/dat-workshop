@@ -21,7 +21,7 @@ So, to build our chat app we are going to use all the things that we have learne
 
 ## Saga
 
-![saga](/../../assets/saga.jpg)
+![saga](/assets/saga.jpg)
 
 We are going to start using hyperdb to build _saga_.
 

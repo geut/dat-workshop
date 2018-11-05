@@ -26,7 +26,7 @@ Para construir nuestro chat vamos a usar lo que venimos aprendiendo. En este mod
 
 ## Saga
 
-![saga](/../../../assets/saga.jpg)
+![saga](/assets/saga.jpg)
 
 Hyperdb es lo que necesitamos para poder avanzar en nuestro chat peer-to-peer.
 

@@ -2,7 +2,7 @@
 
 :checkered_flag: Estamos en la recta final de nuestra aplicación. Vamos a conectar todo lo que vimos con una interfaz de usuario que esperemos sea de su agrado :relaxed:.
 
-![el gato olaf](/../../assets/the-olaf.jpg)
+![el gato olaf](/assets/the-olaf.jpg)
 
 **Con todos nuestro nuevos conocimientos vamos a crear un chat P2P.**
 
