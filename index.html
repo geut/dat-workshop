@@ -48,11 +48,13 @@
       plugins: [
         function(hook, vm) {
           hook.afterEach(function(html, next) {
+            const { pathname } = window.location;
+
             // redirect images
-            const matches = html.match(/src="\/[a-z\-0-9\/]*\/assets\/[a-z\.]*"/g)
+            const matches = html.match(/src="\/[a-z0-9\-\/]*\/assets\/[a-z\.]*"/g)
             if (matches) {
               matches.forEach(src => {
-                html = html.replace(src, `src="${src.match(/\/[a-z0-9\/]*(\/assets\/[a-z\.]*)/)[1]}"`)
+                html = html.replace(src, `src="${pathname}${src.match(/\/[a-z0-9\-\/]*(assets\/[a-z\.]*)/)[1]}"`)
               })
             }
             next(html)
