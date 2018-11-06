@@ -1,11 +1,9 @@
-[comment]: <> (This readme should be the same as problems/en/README.md, it is here only as a default starting point)
-
 # dat-workshop
 > Welcome to `building web apps using Dat` workshop
 
 Sponsored by
 
-![geut logo](geut.png)
+![geut logo](/assets/geut.png)
 
 _This workshop was originally crafted for NodeConf Ar 2018._
 

@@ -2,7 +2,7 @@
 
 :checkered_flag: We are in the final round of our app. We are going to connect all that we've seen with a user interface that we hope people like :relaxed:.
 
-![el gato olaf](/../../../assets/the-olaf.jpg)
+![el gato olaf](/assets/the-olaf.jpg)
 
 **With all our new knowledge we are going to create a P2P chat.**
 

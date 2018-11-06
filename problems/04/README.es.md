@@ -70,7 +70,7 @@ Para poder lograrlo, volvemos a utilizar streams. Hypercore API ofrece un `feed.
 _replication stream_ el cual lee la data de un feed remoto, la incorpora a su feed local y finalmente pasa el resultado
 al siguiente stream, es decir se comporta como un `DuplexStream`.
 
-![replicate](/../../../assets/replicate.png)
+![replicate](/assets/replicate.png)
 
 ### Sincronizar
 

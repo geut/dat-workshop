@@ -23,12 +23,15 @@
         '/': '/'
       },
       alias: {
-        '/(.*)/_navbar.md': '/_navbar.md',
-
         // es
         '/es/problems/(\\d*)/': '/problems/$1/README.es.md',
         '/es/(problems\/\\d*)?(.*)': '/i18n/es/$2',
 
+        // fallback
+        '/(.*)/_navbar.md': '/_navbar.md',
+        '/problems/\\d*/_sidebar.md': '/_sidebar.md',
+
+        // external links
         '/dat': 'https://raw.githubusercontent.com/datproject/dat/master/README.md',
         '/hypercore': 'https://raw.githubusercontent.com/mafintosh/hypercore/master/README.md',
         '/random-access-storage': 'https://raw.githubusercontent.com/random-access-storage/random-access-storage/master/README.md',
@@ -41,7 +44,21 @@
         '/hyperid': 'https://raw.githubusercontent.com/mcollina/hyperid/master/README.md',
         '/geut-discovery-swarm-webrtc': 'https://raw.githubusercontent.com/geut/discovery-swarm-webrtc/master/README.md',
         '/choo': 'https://raw.githubusercontent.com/choojs/choo/master/README.md'
-      }
+      },
+      plugins: [
+        function(hook, vm) {
+          hook.afterEach(function(html, next) {
+            // redirect images
+            const matches = html.match(/src="\/[a-z0-9\/]*\/assets\/[a-z\.]*"/g)
+            if (matches) {
+              matches.forEach(src => {
+                html = html.replace(src, `src="${src.match(/\/[a-z0-9\/]*(\/assets\/[a-z\.]*)/)[1]}"`)
+              })
+            }
+            next(html)
+          });
+        }
+      ]
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
