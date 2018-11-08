@@ -14,7 +14,6 @@
     window.$docsify = {
       name: 'dat-workshop',
       repo: 'https://github.com/geut/dat-workshop',
-      basePath: window.location.pathname,
       auto2top: true,
       loadSidebar: true,
       loadNavbar: true,
@@ -27,7 +26,7 @@
       alias: {
         // es
         '/es/problems/(\\d*)/': '/problems/$1/README.es.md',
-        '/es/(problems\/\\d*)?(.*)': '/i18n/es/$2',
+        '/es/(problems\/\\d*\/)?(.*)': '/i18n/es/$2',
 
         // fallback
         '/(.*)/_navbar.md': '/_navbar.md',
