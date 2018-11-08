@@ -1,5 +1,5 @@
 # dat-workshop
-> Bienvenido al workshop: `building web apps using Dat`
+> Bienvenido al workshop: `Construyendo aplicaciones web P2P usando Dat`
 
 Sponsored by
 
@@ -7,26 +7,28 @@ Sponsored by
 
 _Este workshop fue originalmente creado para NodeConf Ar 2018._
 
-## Goal
+## Objetivo
 
-Introduce the audience to Dat and its core modules. Learn about P2P architectures and it's differences with the common client/server scenario of regular web apps. Also learn how to combine Dat and web app business logic creating this way, P2P web apps.
+Familiarizar a la audiencia con el proyecto Dat y sus modulos principales. Aprender sobre arquitecturas P2P y las diferencias que hay con escenarios mas comunes como el típico cliente/servidor de las aplicaciones web. Ademas, veremos como combinar los conceptos detras de Dat con la lógica de negocios de nuestro proyecto, creando de esta manera, aplicaciones web P2P.
 
-## Getting started
+## Comenzando
 
-Please first, clone this repo and then run `npm install`. This way we are going to save installation time on the workshop and we will ready to start immediately.
+Primero debes **clonar** este repositorio y luego correr `npm install`. De esta forma vamos a ahorrar tiempo de instalación al comienzo del workshop.
 
-## Running the workshop
+## Corriendo el workshop
 
-1. `npm start`, will launch a docsify instance with the whole workshop on it.
-2. There is no step 2 :stuck_out_tongue_closed_eyes:
+Es muy simple,
 
-### What is Dat?
+1. `npm start`, para levantar una instancia local de docsify.
+2. No hay paso 2 :stuck_out_tongue_closed_eyes:
 
-Dat is a community and an open source data-sharing protocol for applications of the future.
+### Qué es Dat?
 
-## Cool people behind Dat
+Dat es una comunidad y un protocolo open source para compartir archivos pensado para las aplicaciones del futuro.
 
-It's important to say thanks, so here it is a big thanks to:
+## Personas importantes de la comunidad
+
+Es importante decir _gracias_, por eso aquí tenemos un **gracias especial** para:
 
 - Karissa McKelvey
 - Mathias Buus
@@ -34,8 +36,7 @@ It's important to say thanks, so here it is a big thanks to:
 - Paul Frazee
 - Jim Pick
 - Max Ogden
-- **and many others!**
+- **Y muchos mas!**
 
-Special thanks to Karissa McKelvey, her work on [chatmesh](https://github.com/karissa/chatmesh-db) (and early work on cabal) was a huge inspiration for this workshop.
-
+Finalmente, una mención especial para Karissa McKelvey, su trabajo en [chatmesh](https://github.com/karissa/chatmesh-db) (y todo el trabajo inicial de cabal), fueron una gran inspiración para este workshop.
 
