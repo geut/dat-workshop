@@ -11,6 +11,10 @@ _This workshop was originally crafted for NodeConf Ar 2018._
 
 Introduce the audience to Dat and its core modules. Learn about P2P architectures and it's differences with the common client/server scenario of regular web apps. Also learn how to combine Dat and web app business logic creating this way, P2P web apps.
 
+## About the app
+We will be working on a P2P/WebRTC chat app, the final result looks like: [Olaf](https://olafchat.netlify.com/) and it works like a P2P PWA, one user create a room then shares it (dat link) with the rest and that's it! :cat2:
+[Try olaf chat](https://olafchat.netlify.com/)
+
 ## Getting started
 
 Please first, clone this repo and then run `npm install`. This way we are going to save installation time on the workshop and we will ready to start immediately.
