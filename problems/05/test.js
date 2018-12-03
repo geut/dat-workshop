@@ -24,4 +24,8 @@ describe('problem 05', () => {
   test('username prop', () => {
     expect(saga.username).toBe('peti')
   })
+
+  test('timestamp prop', () => {
+    expect(typeof saga.timestamp).toBe('number')
+  })
 })
