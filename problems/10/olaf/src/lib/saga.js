@@ -1,12 +1,29 @@
 const EventEmitter = require('events')
+const { Writable } = require('stream')
 const hyperdb = require('hyperdb')
-const hyperid = require('hyperid')
 const pump = require('pump')
-const forEachChunk = require('../../lib/for-each-chunk')
-
+const hyperid = require('hyperid')
 const uuid = hyperid()
 
-module.exports = class Saga extends EventEmitter {
+class ForEachChunk extends Writable {
+  constructor (opts, cb) {
+    if (!cb) {
+      cb = opts
+      opts = {}
+    }
+    super(opts)
+
+    this.cb = cb
+  }
+
+  _write (chunk, enc, next) {
+    this.cb(chunk, enc, next)
+  }
+}
+
+const forEachChunk = (...args) => new ForEachChunk(...args)
+
+class Saga extends EventEmitter {
   constructor (storage, key, username) {
     super()
 
@@ -23,8 +40,27 @@ module.exports = class Saga extends EventEmitter {
     this._updateHistory(this._watchForMessages.bind(this))
   }
 
+  writeMessage (message) {
+    const key = `messages/${uuid()}`
+    const data = {
+      key,
+      message,
+      username: this.username,
+      timestamp: Date.now()
+    }
+
+    return new Promise((resolve, reject) => {
+      this.db.put(key, data, (err) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(key)
+        }
+      })
+    })
+  }
+
   replicate () {
-    // NEW method !!!
     return this.db.replicate({
       live: true,
       userData: JSON.stringify({
@@ -40,16 +76,13 @@ module.exports = class Saga extends EventEmitter {
       throw new Error('peer does not have userData')
     }
 
-    // const data = JSON.parse(/* ... */)
-    // const username = data.username
+    const data = JSON.parse(peer.remoteUserData)
 
-    // secure copy the buffer
-    // const key = Buffer.from(data.key)
+    const key = Buffer.from(data.key)
+    const username = data.username
 
-    // (4) authorize peer
-    // ...
+    await this._authorize(key)
 
-    // This block will be helpful later
     if (!this.users.has(username)) {
       this.users.set(username, new Date())
       this.emit('join', data)
@@ -61,19 +94,19 @@ module.exports = class Saga extends EventEmitter {
     }
   }
 
-  writeMessage (message) {
-    const key = `messages/${uuid()}`
-    const data = {
-      key,
-      message,
-      username: this.username,
-      timestamp: Date.now()
-    }
-
+  _authorize (key) {
     return new Promise((resolve, reject) => {
-      this.db.put(key, data, (err) => {
+      this.db.authorized(key, (err, auth) => {
         if (err) return reject(err)
-        resolve(key)
+
+        if (auth) {
+          return resolve()
+        }
+
+        this.db.authorize(key, (err) => {
+          if (err) return reject(err)
+          resolve()
+        })
       })
     })
   }
@@ -106,24 +139,9 @@ module.exports = class Saga extends EventEmitter {
     })
   }
 
-  _authorize (key) {
-    return new Promise((resolve, reject) => {
-      this.db.authorized(key, (err, auth) => {
-        if (err) return reject(err)
-
-        if (auth) {
-          return resolve('AUTHORIZED')
-        }
-
-        this.db.authorize(key, (err) => {
-          if (err) return reject(err)
-          resolve('AUTHORIZED')
-        })
-      })
-    })
-  }
-
   _ready () {
     return new Promise(resolve => this.db.ready(resolve))
   }
 }
+
+module.exports = (...args) => new Saga(...args)

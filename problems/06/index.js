@@ -6,6 +6,7 @@ module.exports = class Saga {
     this.messages = new Map()
     this.users = new Map()
     this.username = username
+    this.timestamp = Date.now()
     this.db = hyperdb(storage, key, { valueEncoding: 'json' })
   }
 

@@ -1,7 +1,7 @@
 const Emitter = require('events')
 const ram = require('random-access-memory')
 const crypto = require('hypercore-crypto')
-const Saga = require('./solution')
+const Saga = require('.')
 
 class MockedPeer extends Emitter {
   constructor (data) {
@@ -17,7 +17,8 @@ describe('problem 09', () => {
   const peerKey = keyPair.publicKey
   const peer = new MockedPeer({
     username: 'test',
-    key: peerKey
+    key: peerKey,
+    timestamp: Date.now()
   })
 
   beforeAll(() => saga.initialize())

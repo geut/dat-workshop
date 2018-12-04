@@ -50,7 +50,8 @@ Entonces, comencemos el desarrollo de nuestra API, aka: **Saga** :heart_eyes_cat
   * el username, bajo la prop: `username`
   * un [Map](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Map)
   de usuarios (inicialmente vació): `users`
-  * Un `Map` de mensajes (inicialmente vació): `messages`
+  * un `Map` de mensajes (inicialmente vació): `messages`
+  * un timestamp con la fecha actual de creación: `timestamp`
 
 ## Test
 
