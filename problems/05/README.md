@@ -1,4 +1,4 @@
-# 5 - From a distributed log to a distributed db 
+# 5 - From a distributed log to a distributed db
 
 Congratulations :tada::fireworks:!!
 
@@ -13,7 +13,7 @@ Hyperdb offers a key-value distributed over a set of hypercores database. :cool:
 
 One of the most important features is that it give us the ability to have `multiple-writers`. This takes Dat to the next level, where multiple users, once authorized, are able to modify a Dat resource (i.e, **we have multiple owners**.)
 
-## A word about what we are building 
+## A word about what we are building
 
 In this workshop we are learning how to use Dat to create a _P2P web app_. More specifically, our goal here is to build a P2P chat app together and the codename will be _Olaf_ :smiley_cat:.
 
@@ -35,7 +35,7 @@ Let's focus on a list of possible requirements our chat can have:
 
 Cool, let's start writing this new API, **saga**. :heart_eyes_cat:
 
-## Exercise 
+## Exercise
 
 1. Add a constructor to the class `Saga` that receives a `storage`, a `key` and a `username`.
 2. With the `storage` and the `key`, create an instance of hyperdb using **json** as the valueEncoding.
@@ -44,6 +44,7 @@ Cool, let's start writing this new API, **saga**. :heart_eyes_cat:
   * the username, under the prop: `username`
   * a users [Map](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Map), initially empty, under the prop: `users`.
   * a messages `Map` (initially empty): `messages`.
+  * a timestamp with the current datetime: `timestamp`
 
 ## Test
 
@@ -54,7 +55,7 @@ $ npm test ./05
 ## Tips
 
 1. `hyperdb` offers an API similar to hypercore. :wink:
-2. About `Map` usage: 
+2. About `Map` usage:
   - a map can have objects for keys :cool:
   - constructor: `new Map([iterable])`
   - important methods:
