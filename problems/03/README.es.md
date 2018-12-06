@@ -7,7 +7,7 @@ Tanto Hypercore como todo el ecosistema de Dat trabajan con el concepto de
 clave asimétrica para la firma y encriptación de datos.
 
 Esto nos permite asegurar la protección de nuestros datos al momento de
-compartirlos con otros [peers](/docsify/terms).
+compartirlos con otros [peers](/es/terms).
 
 Existen 3 keys para tener en cuenta:
 
