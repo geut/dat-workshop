@@ -2,7 +2,7 @@
 
 :checkered_flag: We are in the final round of our app. We are going to connect all that we've seen with a user interface that we hope people like :relaxed:.
 
-![el gato olaf](/assets/the-olaf.jpg)
+![el gato olaf](/assets/theolaf.jpg)
 
 **With all our new knowledge we are going to create a P2P chat.**
 
@@ -28,11 +28,11 @@ you need and nothing more.
 
 Some important concepts in the Choo world:
 - We have views and components. Usually a view uses various components. A view
-  would be a [_stateful component_](/choo#components). 
+  would be a [_stateful component_](/choo#components).
 - Components are similar to _stateless functions_ in React.
-- In choo core, there is an event system. For example, a rendering dispatches the `render` event. 
+- In choo core, there is an event system. For example, a rendering dispatches the `render` event.
 - Choo comes with a router that maps regex to views.
-- There are some [built-in events](/choo#events) that we can use when we create apps, but also it's ok to use our [own events](/choo#stateevents) that conforms to the logic of our own app. 
+- There are some [built-in events](/choo#events) that we can use when we create apps, but also it's ok to use our [own events](/choo#stateevents) that conforms to the logic of our own app.
 - Finally, the [state](/choo#state) is a shared object that can be mutated.
   A re-renderizer isn't tied to a change in the state directly. Even though
 usually it's usual, but don't forget we have to emit render.
@@ -41,10 +41,10 @@ usually it's usual, but don't forget we have to emit render.
 
 1. First let's familiarize ourselves with `Olaf` :cat2:
   - Review the views (`main.js`).
-  - Then the components. 
+  - Then the components.
   - And then the `stores`. Here we find the connection between `Saga` and `Olaf`. We can also see how the event logic is distributed and which ones will be called. Try to understand when they will occur. When do the _listeners_ connect to the app?
 1. Now let's go over `chat/olaf/lib` where we will find a _placeholder_ for
-   `Saga.` Let's copy the code of the `Saga` class from the last exercise. 
+   `Saga.` Let's copy the code of the `Saga` class from the last exercise.
 1. Return to the store, `stores/chat.js`. In the `initRoom` function we have to finish the binding between `Saga` and `Olaf`.
 
 ## Test
@@ -53,6 +53,6 @@ usually it's usual, but don't forget we have to emit render.
 
 ## Tips
 
-In this exercise we are connecting all that we have learned about dat in 
+In this exercise we are connecting all that we have learned about dat in
 a new application. We understand that there are many new things, so don't
-hesitate to ask questions :smile_cat: 
+hesitate to ask questions :smile_cat:
