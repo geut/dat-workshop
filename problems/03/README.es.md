@@ -58,7 +58,7 @@ hypercore(<storage>,<public key>,<options>)
 ## Ejercicio
 
 1. Instanciar un feed usando la key remota.
-2. Retornar una [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise#S%C3%BAper_simple_(%C2%A110_l%C3%ADneas!)
+2. Retornar una [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise#S%C3%BAper_simple_(%C2%A110_l%C3%ADneas!))
 con el objeto: `{ publicKey, discoveryKey }`.
   * Cada key debe ser retornada en base hexadecimal (`hex`).
 
