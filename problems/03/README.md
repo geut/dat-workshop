@@ -48,7 +48,7 @@ hypercore(<storage>,<public key>,<options>)
 ## Exercise 
 
 1. Create a new hypercore feed using the key passed as a parameter. 
-2. Return a [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise#S%C3%BAper_simple_(%C2%A110_l%C3%ADneas!) with the object: `{ publicKey, discoveryKey }`.
+2. Return a [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise#S%C3%BAper_simple_(%C2%A110_l%C3%ADneas!)) with the object: `{ publicKey, discoveryKey }`.
   * Each key should be returned converted to `hex`.
 
 ### If you have more time... :alarm_clock: 
