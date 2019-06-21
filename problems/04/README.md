@@ -1,4 +1,4 @@
-# 4 - It's all about streams 
+# 4 - It's all about streams
 
 ## Quick introduction to streams
 
@@ -6,9 +6,9 @@ Well, if you have written even a small node.js app, chances are, that you have u
 
 In fact, `streams` are part of the node.js core. Every _request_ or _response_ from a server, every `console.log` or filesystem operation are using streams in one way or another. :boom:
 
-We can picture a stream as an interface for a data _flow_ `a---b---c` which can change over _time_ and where data flows from a _source_ to a _destination_. 
+We can picture a stream as an interface for a data _flow_ `a---b---c` which can change over _time_ and where data flows from a _source_ to a _destination_.
 
-For example, using `streams` we can read a file by _chunks_ making use of a `ReadableStream`, apply some kind of _transformation_ with a `TransformStream` and finally, write every _chunk_ of data into a specific destination using a `WritableStream`. 
+For example, using `streams` we can read a file by _chunks_ making use of a `ReadableStream`, apply some kind of _transformation_ with a `TransformStream` and finally, write every _chunk_ of data into a specific destination using a `WritableStream`.
 
 Some `streams` operate in a single way, like a `ReadableStream` which only _reads_ from a _source_ and pass the data to the next stream:
 
@@ -20,14 +20,14 @@ Other types of `streams` can operate in bi-directional manner, ie, can perform _
 
 !> It is important to keep in mind that this kind of _interface_ exists only to define a common, scalable, and efficient way to communicate data. `streams` help us to abstract the source and destination. It does not matter if we are reading or writing from/to a file or the net. `streams` **speak a unique language** and this allows us to **combine them** the way we need.
 
-:link: If you want to keep on learning about streams, we recommend you read the 
+:link: If you want to keep on learning about streams, we recommend you read the
 [stream-handbook](https://github.com/substack/stream-handbook).
 
 ## Streams in Hypercore
 
 Inside, `hypercore` uses streams to work.
 
-### Reading the logs 
+### Reading the logs
 
 We can read our `feed` using `feed.createReadStream` and display that info on the console using `process.stdout`:
 
@@ -43,7 +43,7 @@ As you can see, we are using the `pipe` method to _connect_ and define our data 
 a.pipe(b).pipe(c)
 ```
 
-### Replication 
+### Replication
 
 Ok, let's suppose we have local feed and a remote public key. At some point we want to read data from this other feed, since we have it's PK, we can decrypt them.
 
@@ -57,7 +57,7 @@ In order to do this, we are going to use streams. Hypercore API has a `feed.repl
 
 ![replicate](/assets/replicate.png)
 
-### Sync 
+### Sync
 
 With `replicate()` we can combine the _remote feed_ with our _local feed_ but we need to be aware of our of data in our _remote feed_.
 
@@ -66,13 +66,16 @@ With `replicate()` we can combine the _remote feed_ with our _local feed_ but we
 If we see the conection between two peers as a bi-directional connection, we can do the following:
 ```javascript
 //                (1)                      (2)
-remoteFeed.pipe(localFeed.replicate()).pipe(remoteFeed)
+const r1 = remoteFeed.replicate()
+const r2 = localFeed.replicate()
+r1.pipe(r2).pipe(r1)
 ```
+
 1. First, data is received from the remote feed and replicated into our local feed.
 2. Once our feed is updated, data is sent to the remote feed. This is made to ensure consistency.
 3. Finally, both feeds have the same data.
 
-## Exercise 
+## Exercise
 
 We are going to simulate reading messages from another peer. To do that we need to:
 
@@ -92,7 +95,7 @@ $ npm test ./04
 
 By design, if we have streams connected by `.pipe` and one of them fails, the rest keep working.
 
-This can lead to multiple error conditions. We want to destroy all the streams if one fails. That's why we are going to use 
+This can lead to multiple error conditions. We want to destroy all the streams if one fails. That's why we are going to use
 [pump](/pump) instead of `.pipe`.
 
 !> As an extra feature, with `pump` we can pass a function as the last argument. This function will be executed when all the streams finish.
@@ -107,8 +110,8 @@ pump(a, b, c, err => {
 })
 ```
 
-### 2 - Reading/Writing data 
+### 2 - Reading/Writing data
 
-A `WritableStream` iterates through all the _chunks_ of data flowing in our streams and we can write them wherever we want, eg: filesystem, network, memory, etc. 
+A `WritableStream` iterates through all the _chunks_ of data flowing in our streams and we can write them wherever we want, eg: filesystem, network, memory, etc.
 
 We have made a special function: `forEachChunk`, which can be seen as a little helper to write data (and of course, it is a `WritableStream`)

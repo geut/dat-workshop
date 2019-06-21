@@ -82,8 +82,11 @@ pensar que el feed remoto puede estar _desactualizado_.
 Si tomamos en cuenta que la conexión entre dos peers es **bidireccional** podríamos hacer lo siguiente:
 ```javascript
 //                (1)                      (2)
-remoteFeed.pipe(localFeed.replicate()).pipe(remoteFeed)
+const r1 = remoteFeed.replicate()
+const r2 = localFeed.replicate()
+r1.pipe(r2).pipe(r1)
 ```
+
 1. Primero recibimos los datos de un feed remoto y los replicamos en nuestro feed local.
 2. Una vez que tenemos nuestro feed actualizado, enviamos los datos nuevamente al feed remoto
 para que se actualice en caso de tener data inconsistente.
