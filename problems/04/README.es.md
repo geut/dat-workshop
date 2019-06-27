@@ -101,11 +101,6 @@ Vamos a simular leer mensajes que otro peer escribio. Para eso:
 cada mensaje en un array.
 3. Una vez finalizada la lectura del feed, retornar el listado de mensajes.
 
-## Test
-
-```
-$ npm test ./04
-```
 
 ## Tips
 
@@ -142,3 +137,18 @@ Sabiendo esto, podemos definir un WritableStream que itere sobre los _chunks_ de
 y guardarlos en la estructura (un `Map` por ejemplo) que necesitemos.
 
 Les recomendamos que investiguen `forEachChunk`, una función que armamos para ayudarlos a cumplir su objetivo.
+
+<!-- tabs:start -->
+## **Test**
+
+```
+$ npm test ./04
+```
+
+[test.js](./test.js ':include')
+
+## **Solución**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->

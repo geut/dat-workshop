@@ -83,11 +83,7 @@ We are going to simulate reading messages from another peer. To do that we need 
 2. Once sync is done, read data from our local feed and push each message into an array.
 3. When we finish reading our feed, we need to return the messages list.
 
-## Test
 
-```
-$ npm test ./04
-```
 
 ## Tips
 
@@ -115,3 +111,18 @@ pump(a, b, c, err => {
 A `WritableStream` iterates through all the _chunks_ of data flowing in our streams and we can write them wherever we want, eg: filesystem, network, memory, etc.
 
 We have made a special function: `forEachChunk`, which can be seen as a little helper to write data (and of course, it is a `WritableStream`)
+
+<!-- tabs:start -->
+## **Test**
+
+```
+$ npm test ./04
+```
+
+[test.js](./test.js ':include')
+
+## **Solution**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->

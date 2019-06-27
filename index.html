@@ -26,7 +26,8 @@
       alias: {
         // es
         '/es/problems/(\\d*)/': '/problems/$1/README.es.md',
-        '/es/(problems\/\\d*\/)?(.*)': '/i18n/es/$2',
+
+        '/es/(problems\/\\d*\/)?(?!.*\.js)(.*)': '/i18n/es/$2',
 
         // fallback
         '/(.*)/_navbar.md': '/_navbar.md',
@@ -48,6 +49,31 @@
       },
       plugins: [
         function(hook, vm) {
+          hook.beforeEach(function(content){
+            const isEs = /Solución/gi.test(content)
+
+            if (!isEs) return content
+
+            let problemNumber = /(?<!\#)\# (\d*) \-{1}/.exec(content)
+            if (problemNumber && problemNumber[1]) {
+              problemNumber = problemNumber[1]
+            }
+
+            const testMatches = content.match(/\[test\.js\]\(\.\/test.js \'\:include\'\)/g)
+            if (testMatches){
+              testMatches.forEach(embed => {
+                content = content.replace(embed, `[test.js](../../../problems/0${problemNumber}/test.js ':include')`)
+              })
+            }
+            const solutionMatches = content.match(/\[solution\.js\]\(\.\/solution.js \'\:include\'\)/g)
+            if (solutionMatches){
+              solutionMatches.forEach(embed => {
+                content = content.replace(embed, `[solution.js](../../../problems/0${problemNumber}/solution.js ':include')`)
+              })
+            }
+
+            return content;
+          })
           hook.afterEach(function(html, next) {
             const { pathname } = window.location;
 
@@ -61,7 +87,14 @@
             next(html)
           });
         }
-      ]
+      ],
+      tabs: {
+        persist    : true,
+        sync       : false,
+        theme      : 'classic',
+        tabComments: true,
+        tabHeadings: true
+      }
     }
   </script>
   <script src="//unpkg.com/docsify@4.8.1/lib/docsify.min.js"></script>
@@ -69,6 +102,8 @@
   <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
   <script src="//unpkg.com/docsify-copy-code"></script>
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- docsify-tabs (latest v1.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
   <script>
     if (typeof navigator.serviceWorker !== 'undefined') {
       navigator.serviceWorker.register('sw.js')

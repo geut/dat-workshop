@@ -1,6 +1,6 @@
 # 9 - Discovering the world :globe_with_meridians:
 
-:hatched_chick: Wow no you have done really well! We are really close to entering the final round of the workshop, where we are going to jump to put all that we've learned in practice in our chat app. 
+:hatched_chick: Wow no you have done really well! We are really close to entering the final round of the workshop, where we are going to jump to put all that we've learned in practice in our chat app.
 
 But first, we are going to study the last feature of Dat that we have skipped
 until now. It is about the old question; **who do we find other peers?**
@@ -43,7 +43,7 @@ In other words, we need to know someone to enter the network.
 
 In fact, Dat maintains it's bootstrap nodes in a separate module: [dat-swarm-defaults](https://github.com/datproject/dat-swarm-defaults).
 
-## What happens on the web? 
+## What happens on the web?
 
 We have seen specific concepts of Dat, that function wonders in the
 commandline. But in this workshop we want to create a web application.
@@ -59,29 +59,38 @@ that allows us, among other things, communicate directly between peers.
 It's fit to mention that webrtc also is used by bootstrap nodes. An interesting
 module to create a bootstrap node is [signalhub](https://github.com/mafintosh/signalhub).
 
-## Exercises 
+## Exercises
 
 > Introduction: Let's start by connecting the parts :electric_plug:. In this exercise, we will work with two files. One is `chat.js` and the other is `index.js`, where we were working with `Saga`. `chat.js` will use `Saga` and is where we will create the _swarm_.
 
 
 1. In the `chat.js` file we are going to create a _swarm_. We will use a module
    by GEUT: [discovery-swarm-webrtc](/geut-discovery-swarm-webrtc) to do it :cool:.
-There are [two important parameters](/geut-discovery-swarm-webrtc#const-sw-swarmopts) that we have account for in the constructor: 
-  - id: `Saga` exposes the hyperdb instance, and from there we can obtain the expone [local feed](/hyperdb#dblocal) and from this feed the `key` (in hexadecimal). This is what we have to pass to it, a unique identifer of our feed. 
+There are [two important parameters](/geut-discovery-swarm-webrtc#const-sw-swarmopts) that we have account for in the constructor:
+  - id: `Saga` exposes the hyperdb instance, and from there we can obtain the expone [local feed](/hyperdb#dblocal) and from this feed the `key` (in hexadecimal). This is what we have to pass to it, a unique identifer of our feed.
   - stream: a stream to replicate with other peers. Luckly `Saga` exposes a `replicate` method. :wink:
 2. Then we are going to create a `signalhub` instance. The constructor receives two parameters, one of them we already have, `signalUrls`; the other, which we have to complete, is used like a _namespace_, here we will use the `discoveryKey` (in hex too) in hyperdb.
 3. We now only lack to connect to `Saga`. In point **(3)**, we have the _swarm_ ready. _swarm_ emits events, one of the most important parts is `connection`. This indicates when we have a new connected _peer_ :boom: When this occurs we have to tell `Saga`. We will add here a **new** method (now we are going to implement it :wink:): `connect(peer`) which receives a peer as a parameter.
 4. On the `Saga` side, we haven't implemented the new `connect` method. Let's go to the `index.js` file. `connect` receives a `peer` as a parameter. `peer` is an object with a property that interests us, `remoteUserData`. From there we will get the data and the `key` (PK) of our new `peer`. Remember the earlier exercise? We will **authorize it** using this info.
 
-## Test
+## Tips
+
+- GEUT will rescue you. We will use a module from GEUT: [discovery-swarm-webrtc](/geut-discovery-swarm-webrtc) to create tehs warm. This module maintains an API very similar to `discovery-swarm`.
+
+<!-- tabs:start -->
+## **Test**
 
 ```
 $ npm test ./09
 ```
 
-## Tips
+[test.js](./test.js ':include')
 
-- GEUT will rescue you. We will use a module from GEUT: [discovery-swarm-webrtc](/geut-discovery-swarm-webrtc) to create tehs warm. This module maintains an API very similar to `discovery-swarm`.
+## **Solution**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->
 
 ## Extra :books:
 

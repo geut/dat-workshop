@@ -66,12 +66,6 @@ con el objeto: `{ publicKey, discoveryKey }`.
 
 Que pasaría si intentas acceder al `secretKey`? :speak_no_evil:
 
-## Test
-
-```
-$ npm test ./03
-```
-
 ## Tips
 
 1. Una vez que nuestro feed esta `ready`, podremos acceder a nuestras keys.
@@ -81,4 +75,16 @@ heredan la interfaz de [EventEmitter](https://nodejs.org/api/events.html).
 1. Las keys son Node [Buffers](https://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end),
 podemos utilizar `toString` para convertirlos a lo que necesitemos.
 
+<!-- tabs:start -->
+## **Test**
 
+```
+$ npm test ./03
+```
+
+[test.js](./test.js ':include')
+
+## **Solución**
+
+[solution.js](./solution.js ':include')
+<!-- tabs:end -->
