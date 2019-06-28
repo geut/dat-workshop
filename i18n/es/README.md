@@ -4,7 +4,7 @@
 Sponsored by
 
 <div align="center">
-  <img alt="geut logo" src="/assets/geut.png">
+  <img alt="geut logo" src="assets/geut.png">
   <div>
   <br />
   <em>Este workshop fue originalmente creado para NodeConf Ar 2018.</em>
