@@ -55,11 +55,7 @@ hypercore(<storage>,<public key>,<options>)
 
 What would happen if you try to access to the `secretKey`? :speak_no_evil:
 
-## Test
 
-```
-$ npm test ./03
-```
 
 ## Tips
 
@@ -67,3 +63,17 @@ $ npm test ./03
 1. To know if the feed is `ready` we can listen for the `ready` event: `feed.on('ready', ...)`. `hypercore` and many others Dat modules inherit from [EventEmitter](https://nodejs.org/api/events.html) interface.
 1. Keys are node.js [Buffers](https://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end). So, we can use `toString` to cast them to whatever we need.
 
+<!-- tabs:start -->
+## **Test**
+
+```
+$ npm test ./03
+```
+
+[test.js](./test.js ':include')
+
+## **Solution**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->

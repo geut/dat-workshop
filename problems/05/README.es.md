@@ -53,12 +53,6 @@ Entonces, comencemos el desarrollo de nuestra API, aka: **Saga** :heart_eyes_cat
   * un `Map` de mensajes (inicialmente vació): `messages`
   * un timestamp con la fecha actual de creación: `timestamp`
 
-## Test
-
-```
-$ npm test ./05
-```
-
 ## Tips
 
 1. Vas a encontrar que hyperdb posee una API muy similar a hypercore. :wink:
@@ -71,3 +65,18 @@ $ npm test ./05
     - `has(clave)`, para saber si nuestro map contiene determinada clave.
     - `keys()`, para obtener todas las claves del map.
   - Hint: es :cool: usar `for...of` para iterar sobre los elementos del map.
+
+<!-- tabs:start -->
+## **Test**
+
+```
+$ npm test ./05
+```
+
+[test.js](./test.js ':include')
+
+## **Solución**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->

@@ -18,14 +18,23 @@ const feed = hypercore('./my-first-dataset', {valueEncoding: 'utf-8'})
 1. Configurar la instancia para que sus datos se codifiquen y decodifiquen en `json`.
 1. Antes de retornar el `feed` agregar al log el objeto: `{ title: 'dat-is-freedom' }`.
 
-## Test
-
-```
-$ npm test ./02
-```
-
 ## Tips
 
 1. Hypercore requiere que se especifique como primer parámetro un `storage` que respete la interfaz de [random-access-storage](/random-access-storage).
 1. Si en vez de pasarle un `storage` le definimos un path, utilizara internamente el modulo [random-access-file](/random-access-file).
 1. Entre las opciones de Hypercore podemos definirle que tipo de [codec](/codecs) vamos a utilizar para serializar/deserializar nuestra data.
+
+<!-- tabs:start -->
+## **Test**
+
+```
+$ npm test ./02
+```
+
+[test.js](./test.js ':include')
+
+## **Solución**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->

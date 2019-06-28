@@ -15,7 +15,7 @@ The next exercise achieves this objective: **to read messages in real-time**.
    our db updates the messages. This means, read the last messages from the
 hyperdb and add those to our message `Map`.
 1. Once we have this list, we should call the function that listens to the new
-   changes in the db and 
+   changes in the db and
 en nuestra db y ante un cambio llame nuevamente al update de mensajes. De esta forma resolveríamos el problema de _real-time_.
 1. Each new message that `Saga` encounters would emit a new `message` event
    with the key of the message as arguments.
@@ -23,11 +23,6 @@ en nuestra db y ante un cambio llame nuevamente al update de mensajes. De esta f
    update when it seems necessary. We don't want to werun the entire stream
 each time there is a change.
 
-## Test
-
-```
-$ npm test ./07
-```
 
 ## Tips
 
@@ -42,3 +37,17 @@ would cause each connected stream to end.
 1. Don't forger to have at hand the documentation of [hyperdb](hyperdb) :shipit:
 1. You can ask us anything! :rainbow:
 
+<!-- tabs:start -->
+## **Test**
+
+```
+$ npm test ./07
+```
+
+[test.js](./test.js ':include')
+
+## **Solution**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->

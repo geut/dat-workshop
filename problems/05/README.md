@@ -46,12 +46,6 @@ Cool, let's start writing this new API, **saga**. :heart_eyes_cat:
   * a messages `Map` (initially empty): `messages`.
   * a timestamp with the current datetime: `timestamp`
 
-## Test
-
-```
-$ npm test ./05
-```
-
 ## Tips
 
 1. `hyperdb` offers an API similar to hypercore. :wink:
@@ -64,3 +58,18 @@ $ npm test ./05
     - `has(key)`, to know if key exists on map.
     - `keys()`, to get all the keys (array) of the map.
   - Hint: it is :cool: to use `for...of` to iterate over the map.
+
+<!-- tabs:start -->
+## **Test**
+
+```
+$ npm test ./05
+```
+
+[test.js](./test.js ':include')
+
+## **Solution**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->

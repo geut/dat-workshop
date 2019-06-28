@@ -43,14 +43,22 @@ Pero debemos tener en cuenta algunas cosas mas:
   - Los mensajes se deben guardar bajo el namespace: `/messages/<messageKey>`.
   - Las key deben ser únicas.
 
-## Test
-
-```
-$ npm test ./06
-```
-
 ## Tips
 
 - La mejor forma de definir una key única es utilizar algún generador de IDs. Te recomendamos
 que investigues: [hyperid](hyperid)
 
+<!-- tabs:start -->
+## **Test**
+
+```
+$ npm test ./06
+```
+
+[test.js](./test.js ':include')
+
+## **Solución**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->

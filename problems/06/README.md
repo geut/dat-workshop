@@ -12,7 +12,7 @@ Hyperdb provides different methods for writing data in the db, one of these is:
 Like we said earlier, hyperdb is a key-value database, that means if we execute
  `.put('/test', 'hi!')` the valu stays saves in the key `/test`.
 
-:microscope: See the `/` that we add to the key? `Hyperdb has support for namespaces` similar to _redis_. 
+:microscope: See the `/` that we add to the key? `Hyperdb has support for namespaces` similar to _redis_.
 
 We can, for example, read all the values related to a particular _namespace_
 and their _subfolders_:
@@ -28,7 +28,7 @@ db.put('/test/2', 'how are you?', () => {
 // [ Node(key=test/2, value='how are you?', seq=2, feed=0)) ]
 ```
 
-## Exercise 
+## Exercise
 
 Define two new instance methods for Saga
 
@@ -40,7 +40,7 @@ A method that receives as a parameter a `string` and returns a **Promise**.
 
 But we have to take into account a few more things:
   - The **promise** resolves itself when it terminates the writing operation
-    and has returned the message key 
+    and has returned the message key
   If the writing fails, we have to make a `reject` with the error
   - We can't just save the message if we don't also have aditional information
     over the same key:
@@ -48,14 +48,22 @@ But we have to take into account a few more things:
   - The messages have to be saved below the namespace `/messages/<messageKey>`.
   - The keys have to be unique.
 
-## Test
-
-```
-$ npm test ./06
-```
-
 ## Tips
 
 - The best way to define a unique key is to use some ID generator. We recommend
   that you look at [hyperid](hyperid)
 
+<!-- tabs:start -->
+## **Test**
+
+```
+$ npm test ./06
+```
+
+[test.js](./test.js ':include')
+
+## **Solution**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->

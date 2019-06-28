@@ -53,15 +53,24 @@ Hay [dos parámetros](/geut-discovery-swarm-webrtc#const-sw-swarmopts) important
 3. Solo nos falta conectar con `Saga`. En este punto **(3)**, tenemos el _swarm_ listo. _swarm_ emite eventos, uno de los mas importantes es `connection`. Esto indica cuando tenemos un nuevo _peer_ conectado :boom:. Cuando esto ocurre debemos informar a `Saga`. Agreguemos aquí el llamado a un **nuevo** método (ahora vamos a implementarlo :wink:) de `Saga`: `connect(peer)` que recibe un peer como parámetro.
 4. Del lado de `Saga` solo nos falta implementar el nuevo método `connect`. Vamos al archivo `index.js`. `connect` recibe un `peer` como parámetro. `peer` es un objeto con una propiedad que nos interesa, `remoteUserData`. De ahí vamos a obtener los datos y la `key` (PK) del nuevo `peer`. Recuerdan el ejercicio anterior? debemos **autorizarlo** usando esta info.
 
-## Test
+## Tips
+
+- GEUT al rescate. Usaremos un modulo de GEUT: [discovery-swarm-webrtc](/geut-discovery-swarm-webrtc) para crear el swarm. Este modulo mantiene una API muy similar a `discovery-swarm`.
+
+<!-- tabs:start -->
+## **Test**
 
 ```
 $ npm test ./09
 ```
 
-## Tips
+[test.js](./test.js ':include')
 
-- GEUT al rescate. Usaremos un modulo de GEUT: [discovery-swarm-webrtc](/geut-discovery-swarm-webrtc) para crear el swarm. Este modulo mantiene una API muy similar a `discovery-swarm`.
+## **Solución**
+
+[solution.js](./solution.js ':include')
+
+<!-- tabs:end -->
 
 ## Extra :books:
 
