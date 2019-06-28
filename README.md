@@ -3,13 +3,14 @@
 
 Sponsored by
 
-<p align="center">
+<div align="center">
   <img alt="geut logo" src="/assets/geut.png">
-</p>
+  <div>
+  <br />
+  <em>This workshop was originally crafted for NodeConf Ar 2018.</em>
+  </div>
+</div>
 
-<br />
-
-_This workshop was originally crafted for NodeConf Ar 2018._
 
 ## Goal
 
