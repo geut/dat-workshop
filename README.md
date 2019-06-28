@@ -11,6 +11,7 @@ Sponsored by
   </div>
 </div>
 
+___
 
 ## Goal
 
@@ -25,7 +26,7 @@ We will be working on a P2P/WebRTC chat app, the final result looks like: [Olaf]
 1. `$ git clone https://github.com/geut/dat-workshop.git`
 2. `npm install`
 
-(This way we are going to save installation time on the workshop and we will ready to start immediately.)
+(This way we are going to save installation time on the workshop and we will be ready to start immediately.)
 
 ## Running the workshop
 
