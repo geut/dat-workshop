@@ -1,7 +1,7 @@
 {
   "name": "dat-workshop",
   "version": "1.0.0",
-  "description": "",
+  "description": "A hands-on introduction to creating decentralized apps using Dat. By GEUT",
   "main": "index.js",
   "browserslist": [
     "> 5%"
