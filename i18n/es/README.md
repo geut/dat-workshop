@@ -3,9 +3,15 @@
 
 Sponsored by
 
-![geut logo](/assets/geut.png)
+<div align="center">
+  <img alt="geut logo" src="/assets/geut.png">
+  <div>
+  <br />
+  <em>Este workshop fue originalmente creado para NodeConf Ar 2018.</em>
+  </div>
+</div>
 
-_Este workshop fue originalmente creado para NodeConf Ar 2018._
+___
 
 ## Objetivo
 
@@ -18,7 +24,9 @@ y podes utilizarla como PWA, un usuario crea una sala y comparte el dat link par
 
 ## Comenzando
 
-Primero debes **clonar** este repositorio y luego correr `npm install`. De esta forma vamos a ahorrar tiempo de instalación al comienzo del workshop.
+1. `$ git clone https://github.com/geut/dat-workshop.git`
+2. `npm install`
+(De esta forma vamos a ahorrar tiempo de instalación al comienzo del workshop.)
 
 ## Corriendo el workshop
 

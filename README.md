@@ -3,9 +3,15 @@
 
 Sponsored by
 
-![geut logo](/assets/geut.png)
+<div align="center">
+  <img alt="geut logo" src="/assets/geut.png">
+  <div>
+  <br />
+  <em>This workshop was originally crafted for NodeConf Ar 2018.</em>
+  </div>
+</div>
 
-_This workshop was originally crafted for NodeConf Ar 2018._
+___
 
 ## Goal
 
@@ -17,7 +23,10 @@ We will be working on a P2P/WebRTC chat app, the final result looks like: [Olaf]
 
 ## Getting started
 
-Please first, clone this repo and then run `npm install`. This way we are going to save installation time on the workshop and we will ready to start immediately.
+1. `$ git clone https://github.com/geut/dat-workshop.git`
+2. `npm install`
+
+(This way we are going to save installation time on the workshop and we will be ready to start immediately.)
 
 ## Running the workshop
 
