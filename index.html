@@ -51,10 +51,10 @@
         function(hook, vm) {
           hook.beforeEach(function(content){
             const isEs = /Solución/gi.test(content)
-
+            const firstLine = content.split('\n')[0]
             if (!isEs) return content
 
-            let problemNumber = /(?<!\#)\# (\d*) \-{1}/.exec(content)
+            let problemNumber = /\# (\d*) \-{1}/.exec(firstLine)
             if (problemNumber && problemNumber[1]) {
               problemNumber = problemNumber[1]
             }
